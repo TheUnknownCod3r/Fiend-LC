@@ -30,22 +30,26 @@
           "build/BepInEx.Core.targets": {}
         }
       },
-      "BepInEx.PluginInfoProps/1.1.0": {
+      "BepInEx.PluginInfoProps/2.1.0": {
         "type": "package",
         "build": {
           "build/BepInEx.PluginInfoProps.props": {}
         }
       },
-      "Evaisa.LethalLib/0.16.4": {
+      "Evaisa.LethalLib/1.1.1": {
         "type": "package",
         "dependencies": {
           "BepInEx.Core": "5.4.21"
         },
         "compile": {
-          "lib/netstandard2.1/LethalLib.dll": {}
+          "lib/netstandard2.1/LethalLib.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.1/LethalLib.dll": {}
+          "lib/netstandard2.1/LethalLib.dll": {
+            "related": ".xml"
+          }
         }
       },
       "HarmonyX/2.7.0": {
@@ -65,7 +69,7 @@
           }
         }
       },
-      "LethalCompany.GameLibs.Steam/70.0.0-ngd.0": {
+      "LethalCompany.GameLibs.Steam/73.0.0-ngd.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.JSON": "13.0.3",
@@ -116,6 +120,7 @@
           "ref/netstandard2.1/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll": {},
           "ref/netstandard2.1/Unity.Services.Authentication.dll": {},
           "ref/netstandard2.1/Unity.Services.Core.Analytics.dll": {},
+          "ref/netstandard2.1/Unity.Services.Core.Components.dll": {},
           "ref/netstandard2.1/Unity.Services.Core.Configuration.dll": {},
           "ref/netstandard2.1/Unity.Services.Core.Device.dll": {},
           "ref/netstandard2.1/Unity.Services.Core.Environments.Internal.dll": {},
@@ -646,6 +651,15 @@
           }
         }
       },
+      "TeamBMX.LobbyCompatibility/1.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/BMX.LobbyCompatibility.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/BMX.LobbyCompatibility.dll": {}
+        }
+      },
       "UnityEngine.Modules/2022.3.9": {
         "type": "package",
         "compile": {
@@ -767,28 +781,29 @@
         "tools/Install.ps1"
       ]
     },
-    "BepInEx.PluginInfoProps/1.1.0": {
-      "sha512": "RqM3aaGs8Hc2m0D+8aSt9mv09rCMYNIF35NB3D6KA2zSpcXJh/9ZVWrPlIUJfA8KYzodSWcCMUexEW24fjwR3w==",
+    "BepInEx.PluginInfoProps/2.1.0": {
+      "sha512": "VCG3QRiqNdW9ku2FEcNsbK+HKxrZmW0VxwMNyLNO7h0xGorU+C6vBHN8Qq4eAL5fU11Uks5x2uoYdqEoKD3P8A==",
       "type": "package",
-      "path": "bepinex.plugininfoprops/1.1.0",
+      "path": "bepinex.plugininfoprops/2.1.0",
       "files": [
         ".nupkg.metadata",
-        "bepinex.plugininfoprops.1.1.0.nupkg.sha512",
+        "bepinex.plugininfoprops.2.1.0.nupkg.sha512",
         "bepinex.plugininfoprops.nuspec",
         "build/BepInEx.PluginInfoProps.props"
       ]
     },
-    "Evaisa.LethalLib/0.16.4": {
-      "sha512": "V2frTrYnC1MJn25V9YrEW03Nc1U3wJeG+/oY2xupsu42mRq16cbn6CwSK4SlIXRPniF4rYZEAJ99irR5dWn5GQ==",
+    "Evaisa.LethalLib/1.1.1": {
+      "sha512": "ZHy0gSo79ImSE0SXOTG6Qy0YrSzzBHk93VajkQmH4cgM5um0LL0CAnVa4pAV4bK9bXTCgjJrsAg4hCLWfiYe4Q==",
       "type": "package",
-      "path": "evaisa.lethallib/0.16.4",
+      "path": "evaisa.lethallib/1.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "evaisa.lethallib.0.16.4.nupkg.sha512",
+        "evaisa.lethallib.1.1.1.nupkg.sha512",
         "evaisa.lethallib.nuspec",
-        "lib/netstandard2.1/LethalLib.dll"
+        "lib/netstandard2.1/LethalLib.dll",
+        "lib/netstandard2.1/LethalLib.xml"
       ]
     },
     "HarmonyX/2.7.0": {
@@ -810,14 +825,14 @@
         "logo_mini.png"
       ]
     },
-    "LethalCompany.GameLibs.Steam/70.0.0-ngd.0": {
-      "sha512": "i2Iqz1Q8fbF5J5tM39r7hHsTtuiPS0SvFFz7qFL7NVSPj/kJJ1R5eI6xaApLFTWvIOzq1ZbVny6CUcU5wgLfxA==",
+    "LethalCompany.GameLibs.Steam/73.0.0-ngd.0": {
+      "sha512": "iaHCHoJTFiTnAyAYIrEbjCJOOuhcJ42+KJnEbmCmf4UdkhjSwwio2bcdPCbchodB9kEp+3v3ATgkBwYn56/Gdw==",
       "type": "package",
-      "path": "lethalcompany.gamelibs.steam/70.0.0-ngd.0",
+      "path": "lethalcompany.gamelibs.steam/73.0.0-ngd.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lethalcompany.gamelibs.steam.70.0.0-ngd.0.nupkg.sha512",
+        "lethalcompany.gamelibs.steam.73.0.0-ngd.0.nupkg.sha512",
         "lethalcompany.gamelibs.steam.nuspec",
         "ref/netstandard2.1/AmazingAssets.TerrainToMesh.dll",
         "ref/netstandard2.1/Assembly-CSharp-firstpass.dll",
@@ -863,6 +878,7 @@
         "ref/netstandard2.1/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll",
         "ref/netstandard2.1/Unity.Services.Authentication.dll",
         "ref/netstandard2.1/Unity.Services.Core.Analytics.dll",
+        "ref/netstandard2.1/Unity.Services.Core.Components.dll",
         "ref/netstandard2.1/Unity.Services.Core.Configuration.dll",
         "ref/netstandard2.1/Unity.Services.Core.Device.dll",
         "ref/netstandard2.1/Unity.Services.Core.Environments.Internal.dll",
@@ -2682,6 +2698,22 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "TeamBMX.LobbyCompatibility/1.5.1": {
+      "sha512": "U1taVjagI6Ma1v7EXLX9dJpJJGHBt8R2UIdOgPu/k87ZFc9qER19a4C1FPigM7qBdE6/pzXo8ovwuPrRRFb51g==",
+      "type": "package",
+      "path": "teambmx.lobbycompatibility/1.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CHANGELOG.md",
+        "README.md",
+        "icon_128x128.png",
+        "lib/net472/BMX.LobbyCompatibility.dll",
+        "lib/netstandard2.1/BMX.LobbyCompatibility.dll",
+        "teambmx.lobbycompatibility.1.5.1.nupkg.sha512",
+        "teambmx.lobbycompatibility.nuspec"
+      ]
+    },
     "UnityEngine.Modules/2022.3.9": {
       "sha512": "sSxqZjd05U0NWlX+eappdlsEuXFvDRHkUaClDVTocGRzCmIwNvgGJIPh22lGklIpNZ3cJZneYJkIUnEIazR8VA==",
       "type": "package",
@@ -2895,9 +2927,10 @@
     ".NETStandard,Version=v2.1": [
       "BepInEx.Analyzers >= 1.*",
       "BepInEx.Core >= 5.*",
-      "BepInEx.PluginInfoProps >= 1.*",
-      "Evaisa.LethalLib >= 0.*",
+      "BepInEx.PluginInfoProps >= 2.*",
+      "Evaisa.LethalLib >= 1.1.1",
       "LethalCompany.GameLibs.Steam >= *-*",
+      "TeamBMX.LobbyCompatibility >= 1.*",
       "UnityEngine.Modules >= 2022.3.9"
     ]
   },
@@ -2909,11 +2942,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj",
-      "projectName": "TheFiend",
-      "projectPath": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj",
+      "projectUniqueName": "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj",
+      "projectName": "theunknowncod3r.TheFiend",
+      "projectPath": "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj",
       "packagesPath": "C:\\Users\\mrfaw\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\obj\\",
+      "outputPath": "C:\\Users\\mrfaw\\Documents\\TheFiend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2962,24 +2995,32 @@
             "version": "[1.*, )"
           },
           "BepInEx.Core": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[5.*, )"
           },
           "BepInEx.PluginInfoProps": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[1.*, )"
+            "version": "[2.*, )"
           },
           "Evaisa.LethalLib": {
             "target": "Package",
-            "version": "[0.*, )"
+            "version": "[1.1.1, )"
           },
           "LethalCompany.GameLibs.Steam": {
             "suppressParent": "All",
             "target": "Package",
             "version": "[*-*, )"
           },
+          "TeamBMX.LobbyCompatibility": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.*, )"
+          },
           "UnityEngine.Modules": {
             "include": "Compile",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2022.3.9, )"
           }

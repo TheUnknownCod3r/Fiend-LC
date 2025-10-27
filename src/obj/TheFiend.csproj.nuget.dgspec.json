@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj": {}
+    "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj": {
+    "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj",
-        "projectName": "TheFiend",
-        "projectPath": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\TheFiend.csproj",
+        "projectUniqueName": "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj",
+        "projectName": "theunknowncod3r.TheFiend",
+        "projectPath": "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj",
         "packagesPath": "C:\\Users\\mrfaw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mrfaw\\Documents\\FiendDecomp\\obj\\",
+        "outputPath": "C:\\Users\\mrfaw\\Documents\\TheFiend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -60,24 +60,32 @@
               "version": "[1.*, )"
             },
             "BepInEx.Core": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[5.*, )"
             },
             "BepInEx.PluginInfoProps": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[1.*, )"
+              "version": "[2.*, )"
             },
             "Evaisa.LethalLib": {
               "target": "Package",
-              "version": "[0.*, )"
+              "version": "[1.1.1, )"
             },
             "LethalCompany.GameLibs.Steam": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[*-*, )"
             },
+            "TeamBMX.LobbyCompatibility": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.*, )"
+            },
             "UnityEngine.Modules": {
               "include": "Compile",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2022.3.9, )"
             }
