@@ -5,3 +5,12 @@ C:\Users\mrfaw\Documents\TheFiend\obj\Debug\netstandard2.1\MyPluginInfo.cs
 C:\Users\mrfaw\Documents\TheFiend\obj\Debug\netstandard2.1\TheFiend.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\mrfaw\Documents\TheFiend\obj\Debug\netstandard2.1\TheFiend.csproj.CoreCompileInputs.cache
 C:\Users\mrfaw\Documents\TheFiend\obj\Debug\netstandard2.1\theunknowncod3r.TheFiend.dll
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\bin\Debug\netstandard2.1\TheFiend.deps.json
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\bin\Debug\netstandard2.1\TheFiend.dll
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.csproj.AssemblyReference.cache
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\MyPluginInfo.cs
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.csproj.CoreCompileInputs.cache
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.dll
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.AssemblyInfoInputs.cache
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.AssemblyInfo.cs

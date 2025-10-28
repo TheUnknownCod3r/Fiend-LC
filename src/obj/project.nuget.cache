@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GLeWhTOx73E=",
+  "dgSpecHash": "nklGzLKUPSs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mrfaw\\Documents\\TheFiend\\TheFiend.csproj",
+  "projectFilePath": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mrfaw\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\mrfaw\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",

@@ -91,23 +91,23 @@ public class TheFiendAI : EnemyAI
     public void Awake()
     {
         path = new NavMeshPath();
-        FavSpot = base.transform.position;
+        FavSpot = transform.position;
         Head = Neck.transform.Find("mixamorig:Head").gameObject;
         OldR = Neck.transform.localRotation;
-        animator = base.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         animator.Play("Idle");
-        AS = base.GetComponent<AudioSource>();
+        AS = GetComponent<AudioSource>();
         AS2 = Spine.GetComponent<AudioSource>();
         try
         {
-            breakerBox = ((Component)(object)UnityEngine.Object.FindObjectOfType<BreakerBox>()).gameObject;
+            breakerBox = FindObjectOfType<BreakerBox>().gameObject;
         }
         catch
         {
             breakerBox = null;
         }
-        roundManager = UnityEngine.Object.FindObjectOfType<RoundManager>();
-        timeOfDay = UnityEngine.Object.FindObjectOfType<TimeOfDay>();
+        roundManager = FindObjectOfType<RoundManager>();
+        timeOfDay = FindObjectOfType<TimeOfDay>();
         MapDot.material.color = Color.red;
         AudioMixerGroup outputAudioMixerGroup = SoundManager.Instance.diageticMixer.FindMatchingGroups("SFX")[0];
         AS.outputAudioMixerGroup = outputAudioMixerGroup;
@@ -117,12 +117,12 @@ public class TheFiendAI : EnemyAI
     {
         base.Start();
         OldYScale = Main.transform.position.y;
-        enemyRandom = new System.Random(StartOfRound.Instance.randomMapSeed + base.thisEnemyIndex);
+        enemyRandom = new System.Random(StartOfRound.Instance.randomMapSeed + thisEnemyIndex);
         AS.clip = audioClips[0];
         AS.loop = true;
         AS.Play();
         LungApparatus = GameObject.Find("LungApparatus(Clone)");
-        if ((bool)LungApparatus)
+        if (LungApparatus)
         {
             LungApparatusPosition = LungApparatus.transform.position;
         }
@@ -152,14 +152,14 @@ public class TheFiendAI : EnemyAI
     public override void DoAIInterval()
     {
         base.DoAIInterval();
-        if ((UnityEngine.Object)(object)base.stunnedByPlayer != null)
+        if (stunnedByPlayer != null)
         {
             AS.clip = audioClips[2];
             AS.loop = false;
             AS.Play();
             IsDying.Value = true;
-            UnityEngine.Object.Destroy(base.gameObject, 4f);
-            base.stunnedByPlayer = null;
+            Destroy(gameObject, 4f);
+            stunnedByPlayer = null;
             skinnedMesh.enabled = false;
         }
         if (!IsDying.Value)
@@ -202,12 +202,12 @@ public class TheFiendAI : EnemyAI
                 {
                     StateOfMind.Value = 0;
                 }
-                if ((bool)breakerBox && !Seeking.Value)
+                if (breakerBox && !Seeking.Value)
                 {
                     GameObject gameObject = breakerBox.transform.Find("Mesh").gameObject;
                     if (Vector3.Distance(Main.transform.position, gameObject.transform.position) <= 5f)
                     {
-                        if (Physics.Raycast(Neck.transform.position, gameObject.transform.position - Neck.transform.position, out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enmies")) && Vector3.Distance(hitInfo.point, gameObject.transform.position) < 2f)
+                        if (Physics.Raycast(Neck.transform.position, gameObject.transform.position - Neck.transform.position, out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enemies")) && Vector3.Distance(hitInfo.point, gameObject.transform.position) < 2f)
                         {
                             StateOfMind.Value = 4;
                             TargetLook = gameObject;
@@ -222,12 +222,12 @@ public class TheFiendAI : EnemyAI
                         }
                     }
                 }
-                if (base.TargetClosestPlayer(100f, false, 70f))
+                if (TargetClosestPlayer(100f, false, 70f))
                 {
-                    TargetLook = ((Component)(object)base.targetPlayer).gameObject;
-                    if ((bool)(UnityEngine.Object)(object)base.targetPlayer.currentlyHeldObject && ((Component)(object)base.targetPlayer.currentlyHeldObject).gameObject.name.Contains("FlashlightItem"))
+                    TargetLook = (targetPlayer).gameObject;
+                    if (targetPlayer.currentlyHeldObject && targetPlayer.currentlyHeldObject.gameObject.name.Contains("FlashlightItem"))
                     {
-                        GameObject gameObject2 = ((Component)(object)base.targetPlayer.currentlyHeldObject).gameObject.transform.Find("Light").gameObject;
+                        GameObject gameObject2 = targetPlayer.currentlyHeldObject.gameObject.transform.Find("Light").gameObject;
                         Light component = gameObject2.GetComponent<Light>();
                         if (component.enabled && Vector3.Distance(Head.transform.position, gameObject2.transform.position) <= 2.5f)
                         {
@@ -236,27 +236,27 @@ public class TheFiendAI : EnemyAI
                         }
                     }
                 }
-                if (StateOfMind.Value == 3 && !GlobalCD.Value && !Seeking.Value && base.TargetClosestPlayer(100f, false, 70f))
+                if (StateOfMind.Value == 3 && !GlobalCD.Value && !Seeking.Value && TargetClosestPlayer(100f, false, 70f))
                 {
-                    TargetLook = (base.targetPlayer).gameObject;
-                    if (Vector3.Distance(base.transform.position, (base.targetPlayer).gameObject.transform.position) <= 4f)
+                    TargetLook = targetPlayer.gameObject;
+                    if (Vector3.Distance(transform.position, targetPlayer.gameObject.transform.position) <= 4f)
                     {
                         HideOnCellingServerRpc();
                     }
                 }
                 if (!EatingPlayer && StateOfMind.Value <= 2 && !GlobalCD.Value && !StandingMode.Value)
                 {
-                    if (base.TargetClosestPlayer(100f, false, 70f))
+                    if (TargetClosestPlayer(100f, false, 70f))
                     {
-                        TargetLook = ((Component)(object)base.targetPlayer).gameObject;
+                        TargetLook = targetPlayer.gameObject;
                         ResetNode = true;
-                        if (base.agent.remainingDistance > 10f && !RageMode.Value)
+                        if (agent.remainingDistance > 10f && !RageMode.Value)
                         {
                             OldYScale = Main.transform.position.y;
                             if (!Seeking.Value)
                             {
                                 StateOfMind.Value = 1;
-                                base.agent.speed = 3 + (Funky.Value - 1);
+                                agent.speed = 3 + (Funky.Value - 1);
                                 animator.Play("Walk");
                                 if (CheckDoor())
                                 {
@@ -272,7 +272,7 @@ public class TheFiendAI : EnemyAI
                             }
                             else
                             {
-                                base.agent.speed = 1f;
+                                agent.speed = 1f;
                                 animator.Play("Seeking");
                                 BreakDoorServerRpc();
                             }
@@ -284,25 +284,25 @@ public class TheFiendAI : EnemyAI
                         else if (!Seeking.Value)
                         {
                             StateOfMind.Value = 2;
-                            if (base.CheckLineOfSightForPlayer(45f, 60, -1) != null)
+                            if (CheckLineOfSightForPlayer(45f, 60, -1) != null)
                             {
-                                base.targetPlayer.JumpToFearLevel(0.9f, true);
+                                targetPlayer.JumpToFearLevel(0.9f, true);
                             }
                             if (!RageMode.Value)
                             {
-                                base.agent.speed = 9 * Funky.Value;
+                                agent.speed = 9 * Funky.Value;
                             }
                             else
                             {
-                                base.agent.speed = 20 * Funky.Value;
+                                agent.speed = 20 * Funky.Value;
                             }
                             animator.Play("Run");
                             BreakDoorServerRpc();
                         }
-                        base.SetDestinationToPosition(base.targetPlayer.transform.position, false);
+                        SetDestinationToPosition(targetPlayer.transform.position, false);
                         if (Seeking.Value)
                         {
-                            PlayerControllerB[] array = UnityEngine.Object.FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
+                            PlayerControllerB[]? array = FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
                             foreach (PlayerControllerB val in array)
                             {
                                 if (val.HasLineOfSightToPosition(Neck.transform.position, 45f, 60, -1f))
@@ -316,7 +316,7 @@ public class TheFiendAI : EnemyAI
                     }
                     else
                     {
-                        base.agent.speed = 3f;
+                        agent.speed = 3f;
                         if (ResetNode)
                         {
                             WonderVectorServerRpc(60f);
@@ -324,13 +324,13 @@ public class TheFiendAI : EnemyAI
                         }
                         if (Node != Vector3.zero)
                         {
-                            base.SetDestinationToPosition(Node, false);
+                            SetDestinationToPosition(Node, false);
                         }
                         else
                         {
                             ResetNode = true;
                         }
-                        if (base.agent.remainingDistance == 0f)
+                        if (agent.remainingDistance == 0f)
                         {
                             ResetNode = true;
                         }
@@ -342,7 +342,7 @@ public class TheFiendAI : EnemyAI
                     }
                     if (!GlobalCD.Value)
                     {
-                        if (base.agent.remainingDistance == 0f && StateOfMind.Value == 0 && !RageMode.Value)
+                        if (agent.remainingDistance == 0f && StateOfMind.Value == 0 && !RageMode.Value)
                         {
                             animator.Play("Idle");
                         }
@@ -352,17 +352,17 @@ public class TheFiendAI : EnemyAI
                         }
                     }
                 }
-                if (StateOfMind.Value == 4 && (bool)TargetLook)
+                if (StateOfMind.Value == 4 && TargetLook)
                 {
                     animator.Play("Walk");
-                    base.SetDestinationToPosition(TargetLook.transform.position, false);
+                    SetDestinationToPosition(TargetLook.transform.position, false);
                 }
                 if (LungApparatus != null && LungApparatusWillRage.Value && !Invis.Value && LungApparatus.transform.position != LungApparatusPosition)
                 {
                     LungApparatus.transform.Find("Point Light").gameObject.GetComponent<Light>().color = Color.red;
                     LungApparatus.GetComponent<LungProp>().scrapValue = 300;
                     LungApparatus = null;
-                    base.StartCoroutine(Rage());
+                    StartCoroutine(Rage());
                 }
             }
         }
@@ -377,9 +377,9 @@ public class TheFiendAI : EnemyAI
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.GetComponent<PlayerControllerB>() && StateOfMind.Value != 3 && !GlobalCD.Value && !Invis.Value && !IsDying.Value && !EatingPlayer && Vector3.Distance(base.transform.position, collision.gameObject.transform.position) < 4f)
+        if (collision.gameObject.GetComponent<PlayerControllerB>() && StateOfMind.Value != 3 && !GlobalCD.Value && !Invis.Value && !IsDying.Value && !EatingPlayer && Vector3.Distance(transform.position, collision.gameObject.transform.position) < 4f)
         {
-            GrabServerRpc((NetworkBehaviour)(object)collision.gameObject.GetComponent<PlayerControllerB>());
+            GrabServerRpc(collision.gameObject.GetComponent<PlayerControllerB>());
         }
     }
 
@@ -452,17 +452,17 @@ public class TheFiendAI : EnemyAI
         {
             EatingPlayer = true;
             TargetLook = null;
-            base.agent.speed = 0f;
-            base.SetDestinationToPosition(base.agent.transform.position, false);
+            agent.speed = 0f;
+            SetDestinationToPosition(agent.transform.position, false);
             float oldspeed = PCB.movementSpeed;
             PCB.movementSpeed = 0f;
             animator.Play("Grab");
-            base.transform.LookAt(Player.transform.position, Vector3.up);
-            base.StartCoroutine(RotatePlayerToMe(PCB));
+            transform.LookAt(Player.transform.position, Vector3.up);
+            StartCoroutine(RotatePlayerToMe(PCB));
             SceamServerRpc();
             yield return new WaitForSeconds(1.7f);
             PCB.KillPlayer(Main.transform.forward * 30f, true, (CauseOfDeath)6, 1, default(Vector3));
-            if (((NetworkBehaviour)(object)PCB).IsOwner)
+            if (IsOwner)
             {
                 PCB.movementSpeed = oldspeed;
             }
@@ -491,9 +491,9 @@ public class TheFiendAI : EnemyAI
 
     private IEnumerator RotatePlayerToMe(PlayerControllerB PCB)
     {
-        if ((bool)(UnityEngine.Object)(object)PCB)
+        if (PCB)
         {
-            Vector3 Position = base.transform.position - ((Component)(object)PCB).gameObject.transform.position;
+            Vector3 Position = transform.position - PCB.gameObject.transform.position;
             while (PCB.health != 0)
             {
                 PlayerSmoothLookAt(Position, PCB);
@@ -504,7 +504,7 @@ public class TheFiendAI : EnemyAI
 
     private void PlayerSmoothLookAt(Vector3 newDirection, PlayerControllerB PCB)
     {
-        ((Component)(object)PCB).gameObject.transform.rotation = Quaternion.Lerp(((Component)(object)PCB).gameObject.transform.rotation, Quaternion.LookRotation(newDirection), Time.deltaTime * 5f);
+        PCB.gameObject.transform.rotation = Quaternion.Lerp(PCB.gameObject.transform.rotation, Quaternion.LookRotation(newDirection), Time.deltaTime * 5f);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -517,17 +517,17 @@ public class TheFiendAI : EnemyAI
                 StateOfMind.Value = 3;
                 LastPos = Main.transform.position;
                 OldYScale = Main.transform.position.y;
-                Physics.Raycast(Main.transform.position, base.transform.TransformDirection(Vector3.up), out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enmies"));
+                Physics.Raycast(Main.transform.position, transform.TransformDirection(Vector3.up), out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enmies"));
                 animator.Play("Hide");
                 AS.Stop();
-                base.agent.speed = 0f;
+                agent.speed = 0f;
                 SetYLevelClientRpc(hitInfo.point.y);
                 MapDot.enabled = false;
             }
         }
         else if (!StandingMode.Value)
         {
-            base.StartCoroutine(Stand());
+            StartCoroutine(Stand());
         }
     }
 
@@ -547,7 +547,7 @@ public class TheFiendAI : EnemyAI
         {
             yield return null;
         }
-        UnityEngine.Object.Destroy(rig);
+        Destroy(rig);
         animator.Play("UnHide");
         yield return new WaitForSeconds(0.2f);
         SetYLevelClientRpc(OldYScale);
@@ -565,13 +565,13 @@ public class TheFiendAI : EnemyAI
     {
         try
         {
-            DoorLock[] array = UnityEngine.Object.FindObjectsOfType(typeof(DoorLock)) as DoorLock[];
+            DoorLock[]? array = FindObjectsOfType(typeof(DoorLock)) as DoorLock[];
             foreach (DoorLock val in array)
             {
-                GameObject gameObject = ((Component)(object)val).transform.parent.transform.parent.transform.parent.gameObject;
-                if (!gameObject.GetComponent<Rigidbody>() && Vector3.Distance(base.transform.position, gameObject.transform.position) <= 4f)
+                GameObject gameObject = val.transform.parent.transform.parent.transform.parent.gameObject;
+                if (!gameObject.GetComponent<Rigidbody>() && Vector3.Distance(transform.position, gameObject.transform.position) <= 4f)
                 {
-                    BashDoorClientRpc(gameObject, base.targetPlayer.transform.position - base.transform.position.normalized * 20f);
+                    BashDoorClientRpc(gameObject, targetPlayer.transform.position - transform.position.normalized * 20f);
                 }
             }
         }
@@ -592,7 +592,7 @@ public class TheFiendAI : EnemyAI
             audioSource.maxDistance = 60f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;
             audioSource.volume = 3f;
-            base.StartCoroutine(TurnOffC(rigidbody, 0.12f));
+            StartCoroutine(TurnOffC(rigidbody, 0.12f));
             rigidbody.AddForce(Position, ForceMode.Impulse);
             audioSource.PlayOneShot(audioClips[3]);
         }
@@ -600,11 +600,11 @@ public class TheFiendAI : EnemyAI
 
     public bool CheckDoor()
     {
-        DoorLock[] array = UnityEngine.Object.FindObjectsOfType(typeof(DoorLock)) as DoorLock[];
+        DoorLock[]? array = FindObjectsOfType(typeof(DoorLock)) as DoorLock[];
         foreach (DoorLock val in array)
         {
             GameObject gameObject = val.transform.parent.transform.parent.gameObject;
-            if (Vector3.Distance(base.transform.position, gameObject.transform.position) <= 4f)
+            if (Vector3.Distance(transform.position, gameObject.transform.position) <= 4f)
             {
                 return true;
             }
@@ -617,7 +617,7 @@ public class TheFiendAI : EnemyAI
         rigidbody.detectCollisions = false;
         yield return new WaitForSeconds(time);
         rigidbody.detectCollisions = true;
-        UnityEngine.Object.Destroy(rigidbody.gameObject, 5f);
+        Destroy(rigidbody.gameObject, 5f);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -633,7 +633,7 @@ public class TheFiendAI : EnemyAI
         }
         if (TempRage)
         {
-            base.StartCoroutine(SetTempRage(tempRage));
+            StartCoroutine(SetTempRage(tempRage));
         }
     }
 
@@ -642,7 +642,7 @@ public class TheFiendAI : EnemyAI
         GlobalCD.Value = true;
         yield return new WaitForSeconds(0.2f);
         animator.Play("Rage");
-        PlayerControllerB[] array = UnityEngine.Object.FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
+        PlayerControllerB[]? array = FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
         foreach (PlayerControllerB player in array)
         {
             player.JumpToFearLevel(0.9f, true);
@@ -671,7 +671,7 @@ public class TheFiendAI : EnemyAI
     {
         Invis.Value = true;
         List<PlayerControllerB> list = new List<PlayerControllerB>();
-        PlayerControllerB[] array = UnityEngine.Object.FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
+        PlayerControllerB[]? array = FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
         foreach (PlayerControllerB val in array)
         {
             if (val.isInsideFactory)
@@ -681,17 +681,17 @@ public class TheFiendAI : EnemyAI
         }
         if (list.Count > 0)
         {
-            base.transform.position = list[UnityEngine.Random.Range(1, list.Count)].gameObject.transform.position;
+            transform.position = list[UnityEngine.Random.Range(1, list.Count)].gameObject.transform.position;
         }
         GlobalCD.Value = true;
-        base.StartCoroutine(CD(25f, UnInvis: true));
+        StartCoroutine(CD(25f, UnInvis: true));
     }
 
     [ClientRpc]
     public void FearedClientRpc()
     {
         animator.Play("CoverFace");
-        base.agent.speed = 0f;
+        agent.speed = 0f;
         AS.Stop();
         AS.clip = audioClips[4];
         AS.loop = false;
@@ -700,12 +700,12 @@ public class TheFiendAI : EnemyAI
 
     public void StartCooldown(float time, bool UnInvis = false)
     {
-        base.StartCoroutine(CD(time, UnInvis));
+        StartCoroutine(CD(time, UnInvis));
     }
 
     private IEnumerator CD(float time, bool UnInvis = false)
     {
-        base.agent.speed = 0f;
+        agent.speed = 0f;
         yield return new WaitForSeconds(time);
         GlobalCD.Value = false;
         if (UnInvis)
@@ -730,8 +730,8 @@ public class TheFiendAI : EnemyAI
     [ServerRpc(RequireOwnership = false)]
     public void WonderVectorServerRpc(float Range)
     {
-        Vector3 vector = base.transform.position + new Vector3(UnityEngine.Random.Range(0f - Range, Range), 0f, UnityEngine.Random.Range(0f - Range, Range));
-        if (base.agent.CalculatePath(vector, path))
+        Vector3 vector = transform.position + new Vector3(UnityEngine.Random.Range(0f - Range, Range), 0f, UnityEngine.Random.Range(0f - Range, Range));
+        if (agent.CalculatePath(vector, path))
         {
             Node = vector;
         }
@@ -744,7 +744,10 @@ public class TheFiendAI : EnemyAI
     [ServerRpc]
     public void BreakerBoxBreakServerRpc()
     {
-        BreakerBoxBreakClientRpc(breakerBox);
+        if (!breakerBox.GetComponent<Rigidbody>())
+        {
+            BreakerBoxBreakClientRpc(breakerBox);
+        }
     }
 
     [ClientRpc]
@@ -755,13 +758,13 @@ public class TheFiendAI : EnemyAI
             GameObject gameObject = networkObject.gameObject;
             gameObject.transform.Find("Mesh").transform.Find("PowerBoxDoor").gameObject.AddComponent<Rigidbody>();
             Rigidbody rigidbody = gameObject.AddComponent<Rigidbody>();
-            base.StartCoroutine(TurnOffC(rigidbody, 0.1f));
-            rigidbody.AddForce((Neck.transform.position - base.transform.position).normalized * 15f, ForceMode.Impulse);
+            StartCoroutine(TurnOffC(rigidbody, 0.1f));
+            rigidbody.AddForce((Neck.transform.position - transform.position).normalized * 15f, ForceMode.Impulse);
             gameObject.GetComponent<AudioSource>().PlayOneShot(audioClips[3]);
-            UnityEngine.Object.Destroy(gameObject, 5f);
+            Destroy(gameObject, 5f);
             gameObject = null;
             roundManager.PowerSwitchOffClientRpc();
-            base.StartCoroutine(StateMindCD(1f, 0));
+            StartCoroutine(StateMindCD(1f, 0));
             animator.Play("Grab");
         }
     }

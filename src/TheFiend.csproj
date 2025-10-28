@@ -2,10 +2,10 @@
 
     <!-- BepInEx Properties -->
     <PropertyGroup>
-        <AssemblyName>theunknowncod3r.TheFiend</AssemblyName>
+        <AssemblyName>TheFiend</AssemblyName>
         <Product>TheFiend</Product>
         <!-- Change to whatever version you're currently on. -->
-        <Version>1.0.0</Version>
+        <Version>1.0.8</Version>
     </PropertyGroup>
 
     <!-- Project Properties -->
@@ -40,10 +40,10 @@
         <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+      <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+      <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     </PropertyGroup>
 
     <!-- Primary Package References -->

@@ -1,0 +1,11 @@
+{
+    "name": "The_Fiend",
+    "version_number": "1.0.8",
+    "website_url": "https://github.com/TheUnknownCod3r/Fiend-LC",
+    "description": "This Entity is form game called Rinse And Repeat",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100",
+	"Evaisa-HookGenPatcher-0.0.5",
+	"Evaisa-LethalLib-1.1.1"
+    ]
+}

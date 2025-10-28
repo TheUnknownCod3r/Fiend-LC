@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TheFiend;
 
-[BepInPlugin("com.TheFiend", "The Fiend", "0.0.0")]
+[BepInPlugin("com.TheFiend", "The Fiend", "1.0.9")]
 public class TheFiend : BaseUnityPlugin
 {
     public static TheFiend instance;
