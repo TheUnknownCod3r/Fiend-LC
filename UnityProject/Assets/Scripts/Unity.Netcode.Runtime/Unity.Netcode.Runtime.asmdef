@@ -1,0 +1,5 @@
+{
+  "name": "Unity.Netcode.Runtime",
+  "references": [],
+  "allowUnsafeCode": true
+}

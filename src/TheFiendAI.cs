@@ -82,7 +82,7 @@ public class TheFiendAI : EnemyAI
 
     public TimeOfDay timeOfDay;
 
-    private GameObject LungApparatus;
+    private LungProp LungApparatus;//lets just have this as the lungProp itself, not a gameobject
 
     private Vector3 LungApparatusPosition;
 
@@ -121,7 +121,7 @@ public class TheFiendAI : EnemyAI
         AS.clip = audioClips[0];
         AS.loop = true;
         AS.Play();
-        LungApparatus = GameObject.Find("LungApparatus(Clone)");
+        LungApparatus = FindObjectOfType<LungProp>();//search for the item as a lungProp, instead
         if (LungApparatus)
         {
             LungApparatusPosition = LungApparatus.transform.position;
@@ -359,8 +359,16 @@ public class TheFiendAI : EnemyAI
                 }
                 if (LungApparatus != null && LungApparatusWillRage.Value && !Invis.Value && LungApparatus.transform.position != LungApparatusPosition)
                 {
-                    LungApparatus.transform.Find("Point Light").gameObject.GetComponent<Light>().color = Color.red;
-                    LungApparatus.GetComponent<LungProp>().scrapValue = 300;
+                    Transform lightTransform = LungApparatus.transform.Find("Point Light");
+                    if (lightTransform != null)//null check in case the light source name changes, and we can't find it. 
+                    {
+                        Light light = lightTransform.GetComponent<Light>();//also check for the light source itself
+                        if (light != null)
+                        {
+                            light.color = Color.red;
+                        }
+                    }
+                    LungApparatus.scrapValue = 300;
                     LungApparatus = null;
                     StartCoroutine(Rage());
                 }

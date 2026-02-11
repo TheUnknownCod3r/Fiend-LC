@@ -1,0 +1,5 @@
+{
+  "name": "Unity.RenderPipelines.HighDefinition.Runtime",
+  "references": [],
+  "allowUnsafeCode": true
+}

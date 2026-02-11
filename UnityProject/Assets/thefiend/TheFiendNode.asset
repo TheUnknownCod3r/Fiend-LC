@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e80ae96b3eb9177eea5c8f9dadbcda1, type: 3}
+  m_Name: TheFiendNode
+  m_EditorClassIdentifier:
+  displayText: The Fiend is a demonic entity characterized by its menacing presence, formidable power, and distinctive feature of six horns adorning its head. Known for its association with the netherworld, The Fiend is a relentless force that embodies darkness and malevolence.
+  terminalEvent:
+  clearPreviousText: 1
+  maxCharactersToType: 263
+  buyItemIndex: -1
+  isConfirmationNode: 0
+  buyRerouteToMoon: -1
+  displayPlanetInfo: -1
+  lockedInDemo: 0
+  shipUnlockableID: -1
+  buyUnlockable: 0
+  returnFromStorage: 0
+  itemCost: 0
+  creatureFileID: 696969
+  creatureName: The Fiend
+  storyLogFileID: -1
+  overrideOptions: 0
+  acceptAnything: 0
+  terminalOptions: []
+  playClip: {fileID: 8300000, guid: 97a482fd622abc24fad2da37c96e2e5d, type: 3}
+  playSyncedClip: 2
+  displayTexture: {fileID: 2800000, guid: e3b77a8e90c2d3f4fa4eec0f3e2824d2, type: 3}
+  displayVideo: {fileID: 0}
+  loadImageSlowly: 0
+  persistentImage: 0
