@@ -1,3 +1,9 @@
+# 1.0.9
+## Bug fixes 
+- Fix Apparatus Rage not working (Rolevote forgot to sync the network Variable, lmao. Im happy relying on the config, since it works.)
+- Fix View rotation after death being weird
+- Fix a few other bugs around the code via cleanup, since it was a mess. 
+- AssetBundle rebuilt = here be bugs. Report them in the discord!
 # 1.0.8
 ## V73 LTS Changes
 - Fix the Fiend for v73 Update. Rebuilt and patched with new Netcode. Source Pushed to Github.

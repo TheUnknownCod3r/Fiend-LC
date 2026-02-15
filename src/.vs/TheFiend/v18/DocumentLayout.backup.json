@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend\\thefiend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiendai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiendai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiend\\syncedinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend\\syncedinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|c:\\users\\mrfaw\\documents\\github\\fiend-lc\\src\\thefiend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2D5415E9-A1F1-401E-B699-37648036E6EA}|TheFiend.csproj|solutionrelative:thefiend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\obj\\Debug\\netstandard2.1\\MyPluginInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "SyncedInstance.cs",
               "DocumentMoniker": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend\\SyncedInstance.cs",
               "RelativeDocumentMoniker": "TheFiend\\SyncedInstance.cs",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "TheFiend",
               "DocumentMoniker": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj",
               "RelativeDocumentMoniker": "TheFiend.csproj",
@@ -83,24 +83,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "TheFiend.csproj",
               "DocumentMoniker": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj",
               "RelativeDocumentMoniker": "TheFiend.csproj",
-              "ToolTip": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj",
-              "RelativeToolTip": "TheFiend.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj*",
+              "RelativeToolTip": "TheFiend.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-27T01:52:28.742Z"
+              "WhenOpened": "2025-10-27T01:52:28.742Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "TheFiendAI.cs",
               "DocumentMoniker": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiendAI.cs",
               "RelativeDocumentMoniker": "TheFiendAI.cs",
-              "ToolTip": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiendAI.cs*",
-              "RelativeToolTip": "TheFiendAI.cs*",
+              "ToolTip": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiendAI.cs",
+              "RelativeToolTip": "TheFiendAI.cs",
               "ViewState": "AgIAAAABAAAAAAAAAAAmwAgBAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T01:52:18.449Z",
@@ -114,7 +115,7 @@
               "RelativeDocumentMoniker": "TheFiend\\TheFiend.cs",
               "ToolTip": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend\\TheFiend.cs*",
               "RelativeToolTip": "TheFiend\\TheFiend.cs*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowA8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T01:50:22.862Z",
               "EditorCaption": ""
@@ -142,7 +143,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Config.cs",
               "DocumentMoniker": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend\\Config.cs",
               "RelativeDocumentMoniker": "TheFiend\\Config.cs",

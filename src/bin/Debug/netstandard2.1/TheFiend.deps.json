@@ -7,12 +7,11 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "TheFiend/1.1.0": {
+      "TheFiend/1.0.9": {
         "dependencies": {
           "BepInEx.Core": "5.4.21",
           "Evaisa.LethalLib": "1.1.1",
-          "LethalCompany.GameLibs.Steam": "73.0.0-ngd.0",
-          "TeamBMX.LobbyCompatibility": "1.5.1"
+          "LethalCompany.GameLibs.Steam": "73.0.0-ngd.0"
         },
         "runtime": {
           "TheFiend.dll": {}
@@ -210,19 +209,11 @@
             "fileVersion": "4.6.24705.1"
           }
         }
-      },
-      "TeamBMX.LobbyCompatibility/1.5.1": {
-        "runtime": {
-          "lib/netstandard2.1/BMX.LobbyCompatibility.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.5.1.0"
-          }
-        }
       }
     }
   },
   "libraries": {
-    "TheFiend/1.1.0": {
+    "TheFiend/1.0.9": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -359,13 +350,6 @@
       "sha512": "sha512-VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
-    },
-    "TeamBMX.LobbyCompatibility/1.5.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-U1taVjagI6Ma1v7EXLX9dJpJJGHBt8R2UIdOgPu/k87ZFc9qER19a4C1FPigM7qBdE6/pzXo8ovwuPrRRFb51g==",
-      "path": "teambmx.lobbycompatibility/1.5.1",
-      "hashPath": "teambmx.lobbycompatibility.1.5.1.nupkg.sha512"
     }
   }
 }

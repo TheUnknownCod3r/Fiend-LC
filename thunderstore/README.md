@@ -71,6 +71,7 @@ Value that increase his speed and his ability chance, this happens when its 15 h
 
 ### v73
 - 1.0.8 - Fix the Fiend for v73 Update. Rebuilt and patched with new Netcode. Source Pushed to Github.
+- 1.0.9 - Fix Apparatus Bug, Fix Look Rotation after death, clean code for future maintenance. 
 
 # Where can I donate?
 the creator who made the fiend model - [Hadrian](https://hadriandev.itch.io/)\

@@ -651,16 +651,7 @@
           }
         }
       },
-      "TeamBMX.LobbyCompatibility/1.5.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.1/BMX.LobbyCompatibility.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/BMX.LobbyCompatibility.dll": {}
-        }
-      },
-      "UnityEngine.Modules/2022.3.9": {
+      "UnityEngine.Modules/2022.3.62": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/UnityEngine.AIModule.dll": {},
@@ -2698,26 +2689,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "TeamBMX.LobbyCompatibility/1.5.1": {
-      "sha512": "U1taVjagI6Ma1v7EXLX9dJpJJGHBt8R2UIdOgPu/k87ZFc9qER19a4C1FPigM7qBdE6/pzXo8ovwuPrRRFb51g==",
+    "UnityEngine.Modules/2022.3.62": {
+      "sha512": "zpu5dELUCFt7Rvvzp50iTrfVusJg+2gmlcaytGEoHYuIP+AOv57X272czjp+sA8N1onPo/IiHFnOEFtT9rLJBA==",
       "type": "package",
-      "path": "teambmx.lobbycompatibility/1.5.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CHANGELOG.md",
-        "README.md",
-        "icon_128x128.png",
-        "lib/net472/BMX.LobbyCompatibility.dll",
-        "lib/netstandard2.1/BMX.LobbyCompatibility.dll",
-        "teambmx.lobbycompatibility.1.5.1.nupkg.sha512",
-        "teambmx.lobbycompatibility.nuspec"
-      ]
-    },
-    "UnityEngine.Modules/2022.3.9": {
-      "sha512": "sSxqZjd05U0NWlX+eappdlsEuXFvDRHkUaClDVTocGRzCmIwNvgGJIPh22lGklIpNZ3cJZneYJkIUnEIazR8VA==",
-      "type": "package",
-      "path": "unityengine.modules/2022.3.9",
+      "path": "unityengine.modules/2022.3.62",
       "files": [
         ".nupkg.metadata",
         "lib/net35/UnityEngine.AIModule.dll",
@@ -2918,7 +2893,7 @@
         "lib/netstandard2.0/UnityEngine.WindModule.dll",
         "lib/netstandard2.0/UnityEngine.XRModule.dll",
         "lib/netstandard2.0/UnityEngine.dll",
-        "unityengine.modules.2022.3.9.nupkg.sha512",
+        "unityengine.modules.2022.3.62.nupkg.sha512",
         "unityengine.modules.nuspec"
       ]
     }
@@ -2930,8 +2905,7 @@
       "BepInEx.PluginInfoProps >= 2.*",
       "Evaisa.LethalLib >= 1.1.1",
       "LethalCompany.GameLibs.Steam >= *-*",
-      "TeamBMX.LobbyCompatibility >= 1.*",
-      "UnityEngine.Modules >= 2022.3.9"
+      "UnityEngine.Modules >= 2022.3.62"
     ]
   },
   "packageFolders": {
@@ -2939,7 +2913,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.1.0",
+    "version": "1.0.9",
     "restore": {
       "projectUniqueName": "C:\\Users\\mrfaw\\Documents\\GitHub\\Fiend-LC\\src\\TheFiend.csproj",
       "projectName": "TheFiend",
@@ -3011,16 +2985,11 @@
             "target": "Package",
             "version": "[*-*, )"
           },
-          "TeamBMX.LobbyCompatibility": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[1.*, )"
-          },
           "UnityEngine.Modules": {
             "include": "Compile",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2022.3.9, )"
+            "version": "[2022.3.62, )"
           }
         },
         "imports": [
