@@ -1,0 +1,244 @@
+﻿{
+    "entries": [
+        {
+            "guid": "891e1f13f3d7361479afccde0c74546b",
+            "assetName": "TheFiend.prefab",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.asset"
+            ]
+        },
+        {
+            "guid": "65d3fcb39dd67306e9bb17a603308070",
+            "assetName": "EnemyType.cs",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.asset"
+            ]
+        },
+        {
+            "guid": "95b62457f576b354eb8e89b2859a8ebd",
+            "assetName": "Cube.asset",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "3dbd84aea8bb80b419721ac2795ad818",
+            "assetName": "TheFiend.asset",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "5d71277cd5db34f48b5bef836abce101",
+            "assetName": "Enemii.controller",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "acb3e40daa42fe444bd032eaf1f556de",
+            "assetName": "claw.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "97a482fd622abc24fad2da37c96e2e5d",
+            "assetName": "Fran Bow Pills Duotine Music Ambience.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab",
+                "Assets/thefiend\\TheFiendNode.asset"
+            ]
+        },
+        {
+            "guid": "0a5378ca6b5c84e4fa7a64a870fc589a",
+            "assetName": "growl.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "d35050453c0427d4287eb1e0183c5294",
+            "assetName": "MatelDoor.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "ceeba3deb046ad44591f419ba562d49f",
+            "assetName": "Pain.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "ac173f9006e43a8419f2ec4e66f87583",
+            "assetName": "scream1.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "aeb90427cf9064040933b7a3041cfd57",
+            "assetName": "scream2.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "379f5dd9f8320124e8b2f4c023c9b7da",
+            "assetName": "Step.ogg",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "bdc38a8532d3b7546bc9e51f9e9b0a6c",
+            "assetName": "enemii.mat",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "39af26b32671ba147a2548b66fdc988f",
+            "assetName": "MapDot.mat",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "608a313db0135b541918b5b6a125cb4b",
+            "assetName": "TheFiend.dll",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "f5ee5a850d66475449a3864a9c431e1a",
+            "assetName": "Diagetic.mixer",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "6d7127b8f98ca8ec9896b384a71d39a2",
+            "assetName": "EnemyAICollisionDetect.cs",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "3c36d0a92cbb1f26a39169ef0eae393a",
+            "assetName": "ScanNodeProperties.cs",
+            "modFiles": [
+                "Assets/thefiend\\TheFiend.prefab"
+            ]
+        },
+        {
+            "guid": "e28d1c1c4013b314882de73b0f17a5f4",
+            "assetName": "TheFiendNode.asset",
+            "modFiles": [
+                "Assets/thefiend\\TheFiendKey.asset"
+            ]
+        },
+        {
+            "guid": "d3cecf05b78b173605122a700874719c",
+            "assetName": "TerminalKeyword.cs",
+            "modFiles": [
+                "Assets/thefiend\\TheFiendKey.asset"
+            ]
+        },
+        {
+            "guid": "e3b77a8e90c2d3f4fa4eec0f3e2824d2",
+            "assetName": "enemii.png",
+            "modFiles": [
+                "Assets/thefiend\\TheFiendNode.asset",
+                "Assets/thefiend\\materials\\enemii.mat"
+            ]
+        },
+        {
+            "guid": "0e80ae96b3eb9177eea5c8f9dadbcda1",
+            "assetName": "TerminalNode.cs",
+            "modFiles": [
+                "Assets/thefiend\\TheFiendNode.asset"
+            ]
+        },
+        {
+            "guid": "61d50ed683bcbce4c8a8e6369037b36e",
+            "assetName": "CoverFace.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "02b266b2ab4874e428cbfdf68eef28d0",
+            "assetName": "Craw.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "0a5d602f514afa34988ff622ee88f7c2",
+            "assetName": "Grab.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "438554ea559cd764987ff720807dcc96",
+            "assetName": "Hide.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "e53ae228a844782408469b0d36f223f0",
+            "assetName": "Idle.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "8e3a05f4cd696434ba365e5ece78f69c",
+            "assetName": "Rage.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "a100f4c1076e47b4cae956114e3bd830",
+            "assetName": "Run.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "f24e670df29e3a64e857f309af200164",
+            "assetName": "Seeking.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "2653bfe15d2db1e4d92c3d42482ef610",
+            "assetName": "UnHide.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "fd1afa4be1047e2469fdaa13cf633089",
+            "assetName": "Walk.anim",
+            "modFiles": [
+                "Assets/thefiend\\animations\\Enemii.controller"
+            ]
+        },
+        {
+            "guid": "6ac3c65865ea295478e628107466bb70",
+            "assetName": "smoke.png",
+            "modFiles": [
+                "Assets/thefiend\\materials\\Smoke_Mat.mat"
+            ]
+        }
+    ]
+}
