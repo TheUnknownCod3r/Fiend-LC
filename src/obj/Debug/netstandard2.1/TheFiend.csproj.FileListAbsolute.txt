@@ -14,3 +14,4 @@ C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.c
 C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.dll
 C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.AssemblyInfoInputs.cache
 C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.AssemblyInfo.cs
+C:\Users\mrfaw\Documents\GitHub\Fiend-LC\src\obj\Debug\netstandard2.1\TheFiend.sourcelink.json

@@ -61,7 +61,7 @@ public class TheFiendAI : EnemyAI
     public NetworkVariable<bool> IsDying = new NetworkVariable<bool>(value: false);
 
     public NetworkVariable<bool> LungApparatusWillRage = new NetworkVariable<bool>(global::TheFiend.TheFiend.WillRageAfterApparatus.Value);
-
+    private Coroutine rotateCoroutine;
     public Quaternion OldR;
 
     public bool Step;
@@ -82,7 +82,7 @@ public class TheFiendAI : EnemyAI
 
     public TimeOfDay timeOfDay;
 
-    private LungProp LungApparatus;//lets just have this as the lungProp itself, not a gameobject
+    private LungProp? LungApparatus;//lets just have this as the lungProp itself, not a gameobject
 
     private Vector3 LungApparatusPosition;
 
@@ -352,7 +352,7 @@ public class TheFiendAI : EnemyAI
                         }
                     }
                 }
-                if (StateOfMind.Value == 4 && TargetLook)
+                if (StateOfMind.Value == 4 && TargetLook != null)
                 {
                     animator.Play("Walk");
                     SetDestinationToPosition(TargetLook.transform.position, false);
@@ -363,10 +363,7 @@ public class TheFiendAI : EnemyAI
                     if (lightTransform != null)//null check in case the light source name changes, and we can't find it. 
                     {
                         Light light = lightTransform.GetComponent<Light>();//also check for the light source itself
-                        if (light != null)
-                        {
-                            light.color = Color.red;
-                        }
+                        light?.color = Color.red;
                     }
                     LungApparatus.scrapValue = 300;
                     LungApparatus = null;
@@ -445,7 +442,7 @@ public class TheFiendAI : EnemyAI
     {
         if (networkObject.TryGet(out var networkObject2))
         {
-            base.StartCoroutine(Grabbing(networkObject2.gameObject));
+            StartCoroutine(Grabbing(networkObject2.gameObject));
         }
     }
 
@@ -466,7 +463,7 @@ public class TheFiendAI : EnemyAI
             PCB.movementSpeed = 0f;
             animator.Play("Grab");
             transform.LookAt(Player.transform.position, Vector3.up);
-            StartCoroutine(RotatePlayerToMe(PCB));
+            rotateCoroutine = StartCoroutine(RotatePlayerToMe(PCB));
             SceamServerRpc();
             yield return new WaitForSeconds(1.7f);
             PCB.KillPlayer(Main.transform.forward * 30f, true, (CauseOfDeath)6, 1, default(Vector3));
@@ -475,6 +472,10 @@ public class TheFiendAI : EnemyAI
                 PCB.movementSpeed = oldspeed;
             }
             yield return new WaitForSeconds(1f);
+            if (rotateCoroutine != null)
+            {
+                StopCoroutine(rotateCoroutine);
+            }
             IdleSoundServerRpc();
             animator.Play("Idle");
             yield return new WaitForSeconds(3f);
@@ -484,6 +485,7 @@ public class TheFiendAI : EnemyAI
             {
                 HideOnCellingServerRpc();
             }
+
             EatingPlayer = false;
         }
         else
@@ -499,14 +501,15 @@ public class TheFiendAI : EnemyAI
 
     private IEnumerator RotatePlayerToMe(PlayerControllerB PCB)
     {
-        if (PCB)
+        while (PCB != null && !PCB.isPlayerDead && PCB.health > 0)
         {
-            Vector3 Position = transform.position - PCB.gameObject.transform.position;
-            while (PCB.health != 0)
+            if (PCB.IsOwner)
             {
-                PlayerSmoothLookAt(Position, PCB);
-                yield return null;
+                Vector3 direction = transform.position - PCB.transform.position;
+                PlayerSmoothLookAt(direction, PCB);
             }
+
+            yield return null;
         }
     }
 
@@ -633,7 +636,7 @@ public class TheFiendAI : EnemyAI
     {
         GlobalCD.Value = true;
         FearedClientRpc();
-        base.StartCoroutine(CD(5f));
+        StartCoroutine(CD(5f));
         float tempRage = 3f;
         if (uselight)
         {
