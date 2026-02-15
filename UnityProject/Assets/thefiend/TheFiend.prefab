@@ -236,7 +236,8 @@ AudioSource:
   m_GameObject: {fileID: 1300652793682687}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -401,9 +402,9 @@ GameObject:
   - component: {fileID: 95441078105055900}
   - component: {fileID: 195307801448061122}
   - component: {fileID: 65217664852057396}
+  - component: {fileID: 8259129799989134492}
   - component: {fileID: 114501881619068257}
   - component: {fileID: 114484159853824960}
-  - component: {fileID: 8259129799989134492}
   - component: {fileID: 1673927091220275823}
   - component: {fileID: 1485732869778342599}
   m_Layer: 19
@@ -518,7 +519,7 @@ AudioSource:
   m_GameObject: {fileID: 1324043855321668}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300008, guid: 9746163aa037c9442a5ef38e82664d45,
+  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -670,6 +671,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.24449, y: 15.110013, z: 11.405883}
   m_Center: {x: -0.0039794436, y: 8.008537, z: 2.6071248}
+--- !u!114 &8259129799989134492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324043855321668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2747814349
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 1
+  AutoObjectParentSync: 1
 --- !u!114 &114501881619068257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,14 +796,13 @@ MonoBehaviour:
   MapDot: {fileID: 23674930630382704}
   skinnedMesh: {fileID: 137221491392801916}
   audioClips:
-  - {fileID: 8300000, guid: acb3e40daa42fe444bd032eaf1f556de, type: 3}
   - {fileID: 8300000, guid: 97a482fd622abc24fad2da37c96e2e5d, type: 3}
-  - {fileID: 8300000, guid: 0a5378ca6b5c84e4fa7a64a870fc589a, type: 3}
-  - {fileID: 8300000, guid: a5f654cea80b7c84a8b705f580b5fba5, type: 3}
-  - {fileID: 8300000, guid: d35050453c0427d4287eb1e0183c5294, type: 3}
-  - {fileID: 8300000, guid: ceeba3deb046ad44591f419ba562d49f, type: 3}
   - {fileID: 8300000, guid: ac173f9006e43a8419f2ec4e66f87583, type: 3}
   - {fileID: 8300000, guid: aeb90427cf9064040933b7a3041cfd57, type: 3}
+  - {fileID: 8300000, guid: d35050453c0427d4287eb1e0183c5294, type: 3}
+  - {fileID: 8300000, guid: ceeba3deb046ad44591f419ba562d49f, type: 3}
+  - {fileID: 8300000, guid: 0a5378ca6b5c84e4fa7a64a870fc589a, type: 3}
+  - {fileID: 8300000, guid: acb3e40daa42fe444bd032eaf1f556de, type: 3}
   StepClip: {fileID: 8300000, guid: 379f5dd9f8320124e8b2f4c023c9b7da, type: 3}
   Seeking:
     m_InternalValue: 0
@@ -816,27 +837,6 @@ MonoBehaviour:
   mainScript: {fileID: 114501881619068257}
   canCollideWithEnemies: 1
   onlyCollideWhenGrounded: 0
---- !u!114 &8259129799989134492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324043855321668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2747814349
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 1
-  AutoObjectParentSync: 1
 --- !u!114 &1673927091220275823
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,127 @@
+ManifestFileVersion: 0
+CRC: 3515829568
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 139bb7515734d562da736ee9770e658c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 013657e57886d1da11085ab8b4e7a2a1
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 139bb7515734d562da736ee9770e658c
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -603552921, guid: 608a313db0135b541918b5b6a125cb4b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d3cecf05b78b173605122a700874719c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 65d3fcb39dd67306e9bb17a603308070, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3c36d0a92cbb1f26a39169ef0eae393a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6d7127b8f98ca8ec9896b384a71d39a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0e80ae96b3eb9177eea5c8f9dadbcda1, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 195
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: AISearchRoutine
+- AssemblyName: Assembly-CSharp
+  ClassName: EnemyBehaviourState
+- AssemblyName: Assembly-CSharp
+  ClassName: EnemySize
+- AssemblyName: Assembly-CSharp
+  ClassName: NavSizeLimit
+- AssemblyName: Unity.Netcode.Runtime
+  ClassName: Unity.Netcode.NetworkVariable`1[System.Boolean]
+- AssemblyName: Unity.Netcode.Runtime
+  ClassName: Unity.Netcode.NetworkVariable`1[System.Int32]
+- AssemblyName: Unity.RenderPipelines.HighDefinition.Runtime
+  ClassName: UnityEngine.Rendering.HighDefinition.BoolScalableSettingValue
+- AssemblyName: Unity.RenderPipelines.HighDefinition.Runtime
+  ClassName: UnityEngine.Rendering.HighDefinition.IntScalableSettingValue
+Assets:
+- Assets/thefiend/smoke.png
+- Assets/thefiend/animations/Craw.anim
+- Assets/thefiend/animations/Enemii.controller
+- Assets/thefiend/audio/growl.ogg
+- Assets/thefiend/audio/Pain.ogg
+- Assets/thefiend/materials/enemii.mat
+- Assets/thefiend/animations/Seeking.anim
+- Assets/thefiend/TheFiend.prefab
+- Assets/thefiend/animations/CoverFace.anim
+- Assets/thefiend/materials/MapDot.mat
+- Assets/thefiend/animations/Hide.anim
+- Assets/thefiend/TheFiendKey.asset
+- Assets/thefiend/animations/Rage.anim
+- Assets/thefiend/audio/MatelDoor.ogg
+- Assets/thefiend/animations/Run.anim
+- Assets/thefiend/Fiend.controller
+- Assets/thefiend/animations/Grab.anim
+- Assets/thefiend/materials/Smoke_Mat.mat
+- Assets/thefiend/TheFiend.controller
+- Assets/thefiend/Cube.asset
+- Assets/thefiend/TheFiend.asset
+- Assets/thefiend/animations/Idle.anim
+- Assets/thefiend/audio/Imprisoned.ogg
+- Assets/thefiend/animations/Walk.anim
+- Assets/thefiend/enemii.png
+- Assets/thefiend/TheFiendNode.asset
+- Assets/thefiend/audio/Step.ogg
+- Assets/thefiend/audio/scream2.ogg
+- Assets/thefiend/audio/Fran Bow Pills Duotine Music Ambience.ogg
+- Assets/thefiend/audio/claw.ogg
+- Assets/thefiend/audio/scream1.ogg
+- Assets/thefiend/animations/UnHide.anim
+Dependencies: []
