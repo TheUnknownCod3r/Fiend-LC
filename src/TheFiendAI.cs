@@ -262,7 +262,7 @@ public class TheFiendAI : EnemyAI
         {
             HideOnCellingServerRpc();
         }
-        if (!LungApparatusWillRage.Value) TheFiendPlugin.logger.LogInfo("The NetworkVariable LungApparatusWillRage is false");
+        //if (!LungApparatusWillRage.Value) TheFiendPlugin.logger.LogInfo("The NetworkVariable LungApparatusWillRage is false");
         if (LungApparatus && (LungApparatusWillRage.Value || TheFiend.Config.WillRageAfterApparatusConfig) && !Invis.Value && !LungApparatus.isLungDocked)
         {
             Transform lightTransform = LungApparatus.transform.Find("Point Light");

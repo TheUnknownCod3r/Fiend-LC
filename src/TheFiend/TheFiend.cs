@@ -13,7 +13,7 @@ using UnityEngine;
 using BepInEx.Bootstrap;
 namespace TheFiend
 {
-    [BepInPlugin("com.TheFiend", "The Fiend", "1.0.9")]
+    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.0")]
     public class TheFiendPlugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("TheFiend");
