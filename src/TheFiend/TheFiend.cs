@@ -1,30 +1,29 @@
 using BepInEx;
+using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using LethalLib;
+using LethalLib.Modules;
 using LethalLib.Modules;
 using System;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
-using LethalLib;
-using LethalLib.Modules;
 using UnityEngine;
-using BepInEx.Bootstrap;
+using UnityEngine.Assertions;
 namespace TheFiend
 {
-    [BepInPlugin("com.TheFiend", "The Fiend", "1.0.9")]
+    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.0")]
     public class TheFiendPlugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("TheFiend");
         public static TheFiendPlugin instance;
-
         public static string RoleCompanyFolder = "Assets/TheFiend/";
 
         public static AssetBundle bundle;
         public static ManualLogSource logger;
         public static Config MyConfig { get; internal set; }
-
 
         private void Awake()
         {
@@ -34,8 +33,8 @@ namespace TheFiend
             MyConfig = new Config(base.Config);
             bundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(base.Info.Location), "thefiend"));
             EnemyType val = bundle.LoadAsset<EnemyType>(RoleCompanyFolder + "TheFiend.asset");
-            Enemies.RegisterEnemy(val, TheFiend.Config.spawnChanceConfig, TheFiend.Config.Moon.Value, bundle.LoadAsset<TerminalNode>(RoleCompanyFolder + "TheFiendNode.asset"), bundle.LoadAsset<TerminalKeyword>(RoleCompanyFolder + "TheFiendKey.asset"));
             NetworkPrefabs.RegisterNetworkPrefab(val.enemyPrefab);
+            Enemies.RegisterEnemy(val, TheFiend.Config.spawnChanceConfig, TheFiend.Config.Moon.Value, bundle.LoadAsset<TerminalNode>(RoleCompanyFolder + "TheFiendNode.asset"), bundle.LoadAsset<TerminalKeyword>(RoleCompanyFolder + "TheFiendKey.asset"));
             Utilities.FixMixerGroups(val.enemyPrefab);
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(TheFiendPlugin));
@@ -57,12 +56,12 @@ namespace TheFiend
                 }
             }
         }
-        public void AddScrap(string Name, int Rare, Levels.LevelTypes level)
+        public void AddScrap(string Name, int Rare)
         {
             Item item = bundle.LoadAsset<Item>(RoleCompanyFolder + Name + ".asset");
             NetworkPrefabs.RegisterNetworkPrefab(item.spawnPrefab);
             Utilities.FixMixerGroups(item.spawnPrefab);
-            Items.RegisterScrap(item, Rare, level);
+            Items.RegisterScrap(item, Rare, Levels.LevelTypes.All);
         }
     }
 }

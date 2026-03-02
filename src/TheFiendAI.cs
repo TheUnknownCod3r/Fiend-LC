@@ -119,7 +119,7 @@ public class TheFiendAI : EnemyAI
         roundManager = FindObjectOfType<RoundManager>();
         timeOfDay = FindObjectOfType<TimeOfDay>();
         MapDot.material.color = Color.red;
-        if (LungApparatus == null) LungApparatus = FindObjectOfType<LungProp>();
+        if (LungApparatus == null) { LungProp[] LungApparatus2 = FindObjectsOfType<LungProp>(); foreach (var lung in LungApparatus2) if (lung.isLungDocked) LungApparatus = lung; }//find all lungs, and only grab onto the docked lung in the map
         AudioMixerGroup outputAudioMixerGroup = SoundManager.Instance.diageticMixer.FindMatchingGroups("SFX")[0];
         AS.outputAudioMixerGroup = outputAudioMixerGroup;
     }
@@ -472,20 +472,42 @@ public class TheFiendAI : EnemyAI
             rotateCoroutine = StartCoroutine(RotatePlayerToMe(PCB));
             SceamServerRpc();
             yield return new WaitForSeconds(1.7f);
-            PCB.KillPlayer(Main.transform.forward * 30f, true, (CauseOfDeath)6, 1, default(Vector3));
-            if (IsOwner)
+            AS.clip = audioClips[7];
+            AS.loop = true;
+            AS.Play();
+            PCB.KillPlayer(Main.transform.forward * 30f, true, CauseOfDeath.Mauling, 1, default(Vector3));
+            PCB.movementSpeed = oldspeed;
+            GameObject tempHead = null;
+            foreach(Transform Stuffs in RoundManager.Instance.mapPropsContainer.transform)
             {
-                PCB.movementSpeed = oldspeed;
+                if(Stuffs.gameObject.name.ToLower().Contains("head") && Vector3.Distance(transform.position,Stuffs.position) < 10f)
+                {
+                    tempHead = Stuffs.gameObject;
+                    UnityEngine.Object.Destroy(tempHead.GetComponent<Rigidbody>());
+                    yield return new WaitForSeconds(0.1f);
+                    tempHead.transform.position = LeftHand.transform.position;
+                    yield return new WaitForSeconds(0.1f);
+                    tempHead.transform.SetParent(LeftHand.transform, worldPositionStays: true);
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                }
             }
             yield return new WaitForSeconds(1f);
             if (rotateCoroutine != null)
             {
                 StopCoroutine(rotateCoroutine);
+                rotateCoroutine = null;
             }
             IdleSoundServerRpc();
             animator.Play("Idle");
             yield return new WaitForSeconds(3f);
-            yield return new WaitForSeconds(2f);
+            if (tempHead != null)
+            {
+                tempHead.transform.SetParent(RoundManager.Instance.mapPropsContainer.transform, worldPositionStays: true);
+                yield return new WaitForSeconds(0.1f);
+                tempHead.AddComponent<Rigidbody>();
+            }
+            yield return new WaitForSeconds(3f);
             RageMode.Value = false;
             if (UnityEngine.Random.Range(1, 30) == 1)
             {
@@ -498,7 +520,7 @@ public class TheFiendAI : EnemyAI
         {
             PCB.DamagePlayer(50, true, true, (CauseOfDeath)0, 0, false, default(Vector3));
             PCB.externalForceAutoFade += Main.transform.forward * 30f;
-            animator.Play("Craw");
+            animator.Play("Crawl");
             GlobalCD.Value = true;
             PCB.movementAudio.PlayOneShot(audioClips[6], 1f);
             StartCooldown(1f);
@@ -507,15 +529,14 @@ public class TheFiendAI : EnemyAI
 
     private IEnumerator RotatePlayerToMe(PlayerControllerB PCB)
     {
-        while (PCB != null && !PCB.isPlayerDead && PCB.health > 0)
+        if (PCB)
         {
-            if (PCB.IsOwner)
+            Vector3 direction = transform.position - PCB.transform.position;
+            while(PCB != null && PCB.health > 0)
             {
-                Vector3 direction = transform.position - PCB.transform.position;
                 PlayerSmoothLookAt(direction, PCB);
+                yield return null;
             }
-
-            yield return null;
         }
     }
 

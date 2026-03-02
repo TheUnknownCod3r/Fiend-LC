@@ -1,3 +1,8 @@
+# 1.1.0
+## Minor Bugfix Edition
+- Fix Clients being unable to move after revival (Thx Kiszony, IceGod, and others for Reporting, and DarkFedoraProductions for helping test), I made a mistake, sorry.
+- Fix Assets, MapDot, ScanNode, and all other items are now assigned to the correct layer again.
+- Readd old Death sound, and Rigid Body animation on death, as Requested by @DarkFedoraProductions.
 # 1.0.9
 ## Bug fixes 
 - Fix Apparatus Rage not working (Rolevote forgot to sync the network Variable, lmao. Im happy relying on the config, since it works.)

@@ -172,6 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4872951639124329}
+  - component: {fileID: 7082435221872326765}
   m_Layer: 0
   m_Name: CreatureVoice
   m_TagString: Untagged
@@ -194,6 +195,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4317476054330162}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!82 &7082435221872326765
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271792050549787}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 55
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1300652793682687
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +349,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -409,7 +507,7 @@ GameObject:
   - component: {fileID: 1485732869778342599}
   m_Layer: 19
   m_Name: TheFiend
-  m_TagString: unknown_20028
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,7 +632,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -705,7 +803,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 3dbd84aea8bb80b419721ac2795ad818, type: 2}
-  skinnedMeshRenderers: []
+  skinnedMeshRenderers:
+  - {fileID: 137221491392801916}
   meshRenderers: []
   creatureAnimator: {fileID: 95441078105055900}
   creatureVoice: {fileID: 82492215568198480}
@@ -803,6 +902,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ceeba3deb046ad44591f419ba562d49f, type: 3}
   - {fileID: 8300000, guid: 0a5378ca6b5c84e4fa7a64a870fc589a, type: 3}
   - {fileID: 8300000, guid: acb3e40daa42fe444bd032eaf1f556de, type: 3}
+  - {fileID: 8300000, guid: 7725cee36bcc3fb4985f0c4104ddcab8, type: 3}
   StepClip: {fileID: 8300000, guid: 379f5dd9f8320124e8b2f4c023c9b7da, type: 3}
   Seeking:
     m_InternalValue: 0
@@ -958,7 +1058,7 @@ GameObject:
   - component: {fileID: 65882778255699003}
   m_Layer: 22
   m_Name: ScanNode
-  m_TagString: unknown_20029
+  m_TagString: DoNotSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,7 +1093,7 @@ MonoBehaviour:
   maxRange: 8
   minRange: 1
   requiresLineOfSight: 1
-  headerText: Fiend
+  headerText: The Fiend
   subText: 
   scrapValue: 0
   creatureScanID: 696969
@@ -1059,6 +1159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4651000234306984}
+  - component: {fileID: 7620077111829445398}
   m_Layer: 0
   m_Name: CreatureSFX
   m_TagString: Untagged
@@ -1081,6 +1182,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4317476054330162}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!82 &7620077111829445398
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450849360120397}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 55
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1460726182292754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1700,7 @@ GameObject:
   - component: {fileID: 4128045080602842}
   - component: {fileID: 114129676534710460}
   - component: {fileID: 65314466295867429}
+  - component: {fileID: 4362053904693882679}
   m_Layer: 11
   m_Name: Collision
   m_TagString: Untagged
@@ -1537,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 114501881619068257}
-  canCollideWithEnemies: 0
+  canCollideWithEnemies: 1
   onlyCollideWhenGrounded: 0
 --- !u!65 &65314466295867429
 BoxCollider:
@@ -1560,6 +1759,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.208133, y: 1, z: 3.210504}
   m_Center: {x: -0.01718157, y: 0, z: -0.45106143}
+--- !u!54 &4362053904693882679
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645129618757999}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1657414630335959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1799,7 @@ GameObject:
   - component: {fileID: 23674930630382704}
   m_Layer: 14
   m_Name: MapDot
-  m_TagString: unknown_20029
+  m_TagString: DoNotSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
