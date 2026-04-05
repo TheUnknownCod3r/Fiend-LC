@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 namespace TheFiend
 {
-    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.0")]
+    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.1")]
     public class TheFiendPlugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("TheFiend");
@@ -33,11 +33,12 @@ namespace TheFiend
             MyConfig = new Config(base.Config);
             bundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(base.Info.Location), "thefiend"));
             EnemyType val = bundle.LoadAsset<EnemyType>(RoleCompanyFolder + "TheFiend.asset");
-            NetworkPrefabs.RegisterNetworkPrefab(val.enemyPrefab);
             Enemies.RegisterEnemy(val, TheFiend.Config.spawnChanceConfig, TheFiend.Config.Moon.Value, bundle.LoadAsset<TerminalNode>(RoleCompanyFolder + "TheFiendNode.asset"), bundle.LoadAsset<TerminalKeyword>(RoleCompanyFolder + "TheFiendKey.asset"));
+            NetworkPrefabs.RegisterNetworkPrefab(val.enemyPrefab);
             Utilities.FixMixerGroups(val.enemyPrefab);
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(TheFiendPlugin));
+            harmony.PatchAll();
         }
         private static void NetcodePatchAwake()
         {

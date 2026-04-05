@@ -1,3 +1,6 @@
+# 1.1.1
+## v80 Release
+- This version adds support for V80 lethal Company. Use v1.1.0 for v73
 # 1.1.0
 ## Minor Bugfix Edition
 - Fix Clients being unable to move after revival (Thx Kiszony, IceGod, and others for Reporting, and DarkFedoraProductions for helping test), I made a mistake, sorry.
