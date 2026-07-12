@@ -116,6 +116,7 @@ public class TheFiendAI : EnemyAI
         {
             breakerBox = null;
         }
+        GetAINodes();
         roundManager = FindObjectOfType<RoundManager>();
         timeOfDay = FindObjectOfType<TimeOfDay>();
         MapDot.material.color = Color.red;
@@ -183,7 +184,7 @@ public class TheFiendAI : EnemyAI
 
         if (IsDying.Value)
         {
-            base.SyncPositionToClients();
+            SyncPositionToClients();
             return;
         }
 
@@ -206,7 +207,7 @@ public class TheFiendAI : EnemyAI
 
         if (GlobalCD.Value)
         {
-            base.SyncPositionToClients();
+            SyncPositionToClients();
             return;
         }
 
@@ -258,23 +259,13 @@ public class TheFiendAI : EnemyAI
             }
         }
 
-        if (hasTarget && StateOfMind.Value == 3 && !Seeking.Value && Vector3.Distance(transform.position,targetPlayer.transform.position) <= 4f)
+        if (hasTarget && StateOfMind.Value == 3 && !Seeking.Value && Vector3.Distance(transform.position, targetPlayer.transform.position) <= 4f)
         {
             HideOnCellingServerRpc();
         }
-        //if (!LungApparatusWillRage.Value) TheFiendPlugin.logger.LogInfo("The NetworkVariable LungApparatusWillRage is false");
         if (LungApparatus && (LungApparatusWillRage.Value || TheFiend.Config.WillRageAfterApparatusConfig) && !Invis.Value && !LungApparatus.isLungDocked)
         {
-            Transform lightTransform = LungApparatus.transform.Find("Point Light");
-            if (lightTransform != null)
-            {
-                Light light = lightTransform.GetComponent<Light>();
-                light?.color = Color.red;
-            }
-
-            LungApparatus.scrapValue = 300;
-            LungApparatus = null;
-            StartCoroutine(Rage());
+            SetLungLightServerRpc();
         }
 
         if (!EatingPlayer && StateOfMind.Value <= 2 && !StandingMode.Value)
@@ -379,7 +370,27 @@ public class TheFiendAI : EnemyAI
 
         base.SyncPositionToClients();
     }
-
+    [ServerRpc(RequireOwnership = false)]
+    public void SetLungLightServerRpc()
+    {
+        SetLungLightClientRpc();
+    }
+    [ClientRpc]
+    public void SetLungLightClientRpc()
+    {
+        SetLungLightOnLocalClient();
+    }
+    public void SetLungLightOnLocalClient()
+    {
+        Transform lightTransform = LungApparatus.transform.Find("Point Light");
+        if (lightTransform != null)
+        {
+            Light light = lightTransform.GetComponent<Light>();
+            light?.color = Color.red;
+        }
+        LungApparatus.scrapValue = 300;
+        StartCoroutine(Rage());
+    }
     [ServerRpc]
     public void ToggleSeekingServerRpc()
     {
@@ -521,7 +532,7 @@ public class TheFiendAI : EnemyAI
             PCB.DamagePlayer(50, true, true, (CauseOfDeath)0, 0, false, default(Vector3));
             PCB.externalForceAutoFade += Main.transform.forward * 30f;
             animator.Play("Crawl");
-            GlobalCD.Value = true;
+            if(IsServer) GlobalCD.Value = true;
             PCB.movementAudio.PlayOneShot(audioClips[6], 1f);
             StartCooldown(1f);
         }
@@ -598,7 +609,7 @@ public class TheFiendAI : EnemyAI
         StandingMode.Value = false;
     }
 
-    [ServerRpc]
+    [ServerRpc  ]
     public void BreakDoorServerRpc()
     {
         try
@@ -661,7 +672,7 @@ public class TheFiendAI : EnemyAI
     [ServerRpc(RequireOwnership = false)]
     public void FearedServerRpc(bool TempRage, bool uselight = false)
     {
-        GlobalCD.Value = true;
+        if(IsServer) GlobalCD.Value = true;
         FearedClientRpc();
         StartCoroutine(CD(5f));
         float tempRage = 3f;
@@ -677,7 +688,7 @@ public class TheFiendAI : EnemyAI
 
     public IEnumerator Rage()
     {
-        GlobalCD.Value = true;
+        if (IsServer) GlobalCD.Value = true;
         yield return new WaitForSeconds(0.2f);
         animator.Play("Rage");
         PlayerControllerB[]? array = FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
@@ -694,7 +705,7 @@ public class TheFiendAI : EnemyAI
         yield return new WaitForSeconds(9f);
         ToggleRageServerRpc(TheRageValue: true);
         AS.maxDistance = 30f;
-        GlobalCD.Value = false;
+        if (IsServer) GlobalCD.Value = false;
         yield return new WaitForSeconds(20f);
         ToggleRageServerRpc(TheRageValue: false);
     }
@@ -722,7 +733,7 @@ public class TheFiendAI : EnemyAI
         {
             transform.position = list[UnityEngine.Random.Range(1, list.Count)].gameObject.transform.position;
         }
-        GlobalCD.Value = true;
+        if (IsServer) GlobalCD.Value = true;
         StartCoroutine(CD(25f, UnInvis: true));
     }
 
@@ -746,7 +757,7 @@ public class TheFiendAI : EnemyAI
     {
         agent.speed = 0f;
         yield return new WaitForSeconds(time);
-        GlobalCD.Value = false;
+        if (IsServer) GlobalCD.Value = false;
         if (UnInvis)
         {
             Invis.Value = false;

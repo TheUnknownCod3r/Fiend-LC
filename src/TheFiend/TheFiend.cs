@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 namespace TheFiend
 {
-    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.1")]
+    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.2")]
     public class TheFiendPlugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("TheFiend");
@@ -23,19 +23,38 @@ namespace TheFiend
 
         public static AssetBundle bundle;
         public static ManualLogSource logger;
+        public static AssetBundle Assets;
         public static Config MyConfig { get; internal set; }
+        internal Assembly assembly => Assembly.GetExecutingAssembly();
+        internal string GetFilePath(string path)
+        {
+            return assembly.Location.Replace(assembly.GetName().Name + ".dll", path);
+        }
 
+        private void LoadAssets()
+        {
+            try
+            {
+                Assets = AssetBundle.LoadFromFile(GetFilePath("thefiend"));
+            }
+            catch (Exception arg)
+            {
+                logger.LogError($"Failed to load asset bundle! {arg}");
+            }
+        }
         private void Awake()
         {
             if (instance == null) instance = this;
             NetcodePatchAwake();
+            LoadAssets();
             logger = base.Logger;
             MyConfig = new Config(base.Config);
-            bundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(base.Info.Location), "thefiend"));
-            EnemyType val = bundle.LoadAsset<EnemyType>(RoleCompanyFolder + "TheFiend.asset");
-            Enemies.RegisterEnemy(val, TheFiend.Config.spawnChanceConfig, TheFiend.Config.Moon.Value, bundle.LoadAsset<TerminalNode>(RoleCompanyFolder + "TheFiendNode.asset"), bundle.LoadAsset<TerminalKeyword>(RoleCompanyFolder + "TheFiendKey.asset"));
+            EnemyType val = Assets.LoadAsset<EnemyType>("TheFiend.asset");
+            TerminalNode val1 = Assets.LoadAsset<TerminalNode>("TheFiendNode.asset");
+            TerminalKeyword val2 = Assets.LoadAsset<TerminalKeyword>("TheFiendKey.asset");
             NetworkPrefabs.RegisterNetworkPrefab(val.enemyPrefab);
             Utilities.FixMixerGroups(val.enemyPrefab);
+            Enemies.RegisterEnemy(val, TheFiend.Config.spawnChanceConfig, TheFiend.Config.Moon.Value,val1,val2);
             harmony.PatchAll(typeof(Plugin));
             harmony.PatchAll(typeof(TheFiendPlugin));
             harmony.PatchAll();
@@ -59,7 +78,7 @@ namespace TheFiend
         }
         public void AddScrap(string Name, int Rare)
         {
-            Item item = bundle.LoadAsset<Item>(RoleCompanyFolder + Name + ".asset");
+            Item item = Assets.LoadAsset<Item>( Name + ".asset");
             NetworkPrefabs.RegisterNetworkPrefab(item.spawnPrefab);
             Utilities.FixMixerGroups(item.spawnPrefab);
             Items.RegisterScrap(item, Rare, Levels.LevelTypes.All);

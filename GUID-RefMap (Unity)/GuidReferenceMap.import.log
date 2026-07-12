@@ -1,0 +1,44 @@
+﻿GUID Import
+
+
+Loaded JSON from C:/Users/mrfaw/Documents/GitHub/Fiend-LC/GUID-RefMap (Unity)/GuidReferenceMap.json
+Successfully loaded 34 entries from JSON.
+
+SCANNING BASE FOLDER
+
+
+SCANNING MOVE FOLDER
+
+Replaced 891e1f13f3d7361479afccde0c74546b → 8282064852890924288faed0e1581e8b in Assets/thefiend\TheFiend.asset
+WARNING: No matching asset found for 'EnemyType.cs' — skipping.
+Replaced 95b62457f576b354eb8e89b2859a8ebd → c8432536e294707408f68112157deccc in Assets/thefiend\TheFiend.prefab
+Replaced 3dbd84aea8bb80b419721ac2795ad818 → c5e08c0e59b63ef47a9ef9545820e125 in Assets/thefiend\TheFiend.prefab
+Replaced 5d71277cd5db34f48b5bef836abce101 → fca245d8600ea144d9f700a4eb216278 in Assets/thefiend\TheFiend.prefab
+Replaced acb3e40daa42fe444bd032eaf1f556de → 8c130b6a849150244b0842332001e403 in Assets/thefiend\TheFiend.prefab
+Replaced 97a482fd622abc24fad2da37c96e2e5d → af469b1833acbd6439b3d7edcbedbe48 in Assets/thefiend\TheFiend.prefab
+Replaced 97a482fd622abc24fad2da37c96e2e5d → af469b1833acbd6439b3d7edcbedbe48 in Assets/thefiend\TheFiendNode.asset
+Replaced d35050453c0427d4287eb1e0183c5294 → f7c9003f742e5274f896b20ce779d38a in Assets/thefiend\TheFiend.prefab
+Replaced ceeba3deb046ad44591f419ba562d49f → 5a50dd926bc365d47908c4a0a2eb7100 in Assets/thefiend\TheFiend.prefab
+Replaced ac173f9006e43a8419f2ec4e66f87583 → dc765a526b996aa40ad5e0a042591e8f in Assets/thefiend\TheFiend.prefab
+Replaced aeb90427cf9064040933b7a3041cfd57 → 33a42d51e4c4a8f4a97ba1314cc606b7 in Assets/thefiend\TheFiend.prefab
+Replaced 379f5dd9f8320124e8b2f4c023c9b7da → da9333f71856dfe4b90331d04a28e041 in Assets/thefiend\TheFiend.prefab
+Replaced bdc38a8532d3b7546bc9e51f9e9b0a6c → 4cfed7314153a3c42ba6612a724b31af in Assets/thefiend\TheFiend.prefab
+WARNING: No matching asset found for 'TheFiend.dll' — skipping.
+WARNING: No matching asset found for 'Diagetic.mixer' — skipping.
+WARNING: No matching asset found for 'EnemyAICollisionDetect.cs' — skipping.
+WARNING: No matching asset found for 'ScanNodeProperties.cs' — skipping.
+Replaced e28d1c1c4013b314882de73b0f17a5f4 → fcaee358e23c1094a843551eee45f4df in Assets/thefiend\TheFiendKey.asset
+WARNING: No matching asset found for 'TerminalKeyword.cs' — skipping.
+Replaced e3b77a8e90c2d3f4fa4eec0f3e2824d2 → 2e03ffb322148284e959dba603697c76 in Assets/thefiend\TheFiendNode.asset
+Replaced e3b77a8e90c2d3f4fa4eec0f3e2824d2 → 2e03ffb322148284e959dba603697c76 in Assets/thefiend\materials\enemii.mat
+WARNING: No matching asset found for 'TerminalNode.cs' — skipping.
+Replaced 61d50ed683bcbce4c8a8e6369037b36e → 6042ca4c7e7955a48a04eae461342376 in Assets/thefiend\animations\Enemii.controller
+Replaced 02b266b2ab4874e428cbfdf68eef28d0 → 038feef73c48c4e4c92420dea9765de8 in Assets/thefiend\animations\Enemii.controller
+Replaced 0a5d602f514afa34988ff622ee88f7c2 → 154fc8e0331ce9e4a9bfe4f34b03a904 in Assets/thefiend\animations\Enemii.controller
+Replaced 438554ea559cd764987ff720807dcc96 → e5f52e7f6fbe5414fbdfa7502dbbb7cb in Assets/thefiend\animations\Enemii.controller
+Replaced 8e3a05f4cd696434ba365e5ece78f69c → 2279a8bca8101594f9742f08dcae5639 in Assets/thefiend\animations\Enemii.controller
+Replaced a100f4c1076e47b4cae956114e3bd830 → b7fb43c2738aaac4ba67d7074a3d8b49 in Assets/thefiend\animations\Enemii.controller
+Replaced f24e670df29e3a64e857f309af200164 → f119b3ad0b356d349bdfffb750964e95 in Assets/thefiend\animations\Enemii.controller
+Replaced 2653bfe15d2db1e4d92c3d42482ef610 → 41a48094cd5f7894f892077f38434778 in Assets/thefiend\animations\Enemii.controller
+Replaced 6ac3c65865ea295478e628107466bb70 → 292921028cae0f94285a430b17ae32b3 in Assets/thefiend\materials\Smoke_Mat.mat
+Finished reconnecting. 25 files updated.

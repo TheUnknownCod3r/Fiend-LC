@@ -36,7 +36,7 @@ namespace TheFiend
         public void BindConfigs(ConfigFile cfg)
         {
             SpawnChance = cfg.Bind("Fiend", "Spawn Weight", 30, "The Chance for the Fiend to Spawn indoors");
-            Moon = cfg.Bind("Fiend", "Moon", Levels.LevelTypes.TitanLevel, "What Moon can the Fiend Spawn On?");
+            Moon = cfg.Bind("Fiend", "Moon", Levels.LevelTypes.All, "What Moon can the Fiend Spawn On?");
             FlickerRngChance = cfg.Bind("Fiend", "Flicker Chance", 1000, "This is a Random Chance out of 1/1000 happening to a random Player");
             WillRageAfterApparatus = cfg.Bind("Fiend", "Rage After Apparatus", true, "Trigger his rage mode if you remove the Apparatus.");
             Volume = cfg.Bind("Fiend", "Volume", 1f, "Sounds as scream and idle sound, not step sounds");

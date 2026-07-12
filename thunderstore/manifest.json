@@ -1,7 +1,7 @@
 {
-    "name": "The_Fiend_Fork",
-    "version_number": "1.1.1",
-    "website_url": "https://github.com/TheUnknownCod3r/Fiend-LC",
+    "name": "The_Fiend",
+    "version_number": "1.1.2",
+    "website_url": "https://github.com/AuroraDoesCode/Fiend-LC",
     "description": "This Entity is form game called Rinse And Repeat",
     "dependencies": [
         "BepInEx-BepInExPack-5.4.2100",

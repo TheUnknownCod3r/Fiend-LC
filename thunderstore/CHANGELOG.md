@@ -1,3 +1,12 @@
+# 1.1.2
+## The Long awaited Bugfix Version
+This update fixes the following bugs.
+- Fiend Invisible to clients
+- Clients cannot be killed by Fiend
+- Host cannot be killed by Fiend
+- Apparatus Rage not synced to all players
+- More fixes I can't remember.
+
 # 1.1.1
 ## v80 Release
 - This version adds support for V80 lethal Company. Use v1.1.0 for v73
