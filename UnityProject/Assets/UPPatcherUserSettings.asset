@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbffb8a62fe1450486aff8425ba7dc78, type: 3}
   m_Name: UPPatcherUserSettings
   m_EditorClassIdentifier: 
-  _gameFolderPath: H:/SteamLibrary/steamapps/common/Lethal Company
+  _gameFolderPath: H:\SteamLibrary\steamapps\common\Lethal Company
   _assetRipperDownloadFolderPath: AssetRipper
   _assetRipperExportFolderPath: AssetRipperOutput

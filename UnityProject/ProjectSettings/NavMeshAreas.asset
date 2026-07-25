@@ -29,9 +29,9 @@ NavMeshProjectSettings:
     cost: 1
   - name: Nest
     cost: 1
-  - name:
+  - name: Water
     cost: 1
-  - name:
+  - name: EnemiesOnly
     cost: 1
   - name:
     cost: 1

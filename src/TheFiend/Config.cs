@@ -21,13 +21,14 @@ namespace TheFiend
         public static ConfigEntry<int> FlickerRngChance;
 
         public static ConfigEntry<bool> WillRageAfterApparatus;
-
+        public static ConfigEntry<bool> enableLegacyBehaviour;
         public static ConfigEntry<float> Volume;
 
         public static int spawnChanceConfig;
         public static int FlickerRngConfig;
         public static bool WillRageAfterApparatusConfig;
         public static float VolumeConfig;
+        public static bool EnableLegacyBehaviourConfig;
         public Config(ConfigFile cfg)
         {
             InitInstance(this);
@@ -40,10 +41,12 @@ namespace TheFiend
             FlickerRngChance = cfg.Bind("Fiend", "Flicker Chance", 1000, "This is a Random Chance out of 1/1000 happening to a random Player");
             WillRageAfterApparatus = cfg.Bind("Fiend", "Rage After Apparatus", true, "Trigger his rage mode if you remove the Apparatus.");
             Volume = cfg.Bind("Fiend", "Volume", 1f, "Sounds as scream and idle sound, not step sounds");
+            enableLegacyBehaviour = cfg.Bind("Fiend", "Legacy Behaviour", false, "Enable the Old Fiend Behaviour from v1.0.5");
             spawnChanceConfig = SpawnChance.Value;
             FlickerRngConfig = FlickerRngChance.Value;
             WillRageAfterApparatusConfig = WillRageAfterApparatus.Value;
             VolumeConfig = Volume.Value;
+            EnableLegacyBehaviourConfig = enableLegacyBehaviour.Value;
         }
 
     }

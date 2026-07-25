@@ -1,3 +1,22 @@
+# 1.1.6
+## The "My Legs" update
+- Fix the Fiends legs, so he can run again.
+- Fix Footsteps sound, now he thumps around again
+
+# 1.1.5
+## Flashlight Stun fix
+- Fix Flashlight Stun. In testing, this worked consistently when I dropped my flashlight at round start, then picked it up. 
+- Add super debug config option that nobody should ever enable (Totally try it, if you like old fiend).
+
+# 1.1.4
+## Apparatus Rage fix #2
+- Properly Fix Apparatus rage, he can kill again when you rob his apparatus. 
+- Fix another broken sound (Dog growl on Rage? lol)
+
+# 1.1.3
+## Just small fixes
+- Fix Animations being broken, the Refmap was broken and I missed it. Thanks @Mr.SaltedBeef
+
 # 1.1.2
 ## The Long awaited Bugfix Version
 This update fixes the following bugs.

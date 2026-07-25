@@ -7,59 +7,61 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/InitSceneLaunchOptions.unity
-    guid: 1fbcdeffa19fdb949b134fc97c0b5243
+    guid: 81346eeba2cc1bf4693c9c4cb0f7d2b4
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/ColdOpen1.unity
-    guid: edbff720bf0a09d4e8505cad671ac33d
+    guid: 3baa8ab7a6251534a9a76adbd94e7829
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/ColdOpen2.unity
-    guid: 6e5f5f0291e6441489e72fb70a517c94
+    guid: bdfbbd33e2c74444497aea0f738e122e
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/CompanyBuilding.unity
-    guid: ca216f4a9c040874bb987020565f3bdf
+    guid: faca9ac4f3b2b04458729652d20c8faf
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/InitScene.unity
-    guid: 54091d4dafa680a45b3789e771902e2c
+    guid: c3e2ef69d329d5542bb6928ada6e8687
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/InitSceneLANMode.unity
-    guid: 9d4e734de989c974f978635c28d11c40
+    guid: 1ec5974098d878246a6f0ab15fd2dfec
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level1Experimentation.unity
-    guid: c76d82c9b4c1303409790215dffad93e
+    guid: 3bce49e29e87df64cb430372007fa20d
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level2Assurance.unity
-    guid: 2de4733eb9e713642af07c407dcfb872
+    guid: 6ba3c9b608270f44bb7c189cf034c867
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level3Vow.unity
-    guid: ec8c1afa4289f2b48b74887117d4fad1
+    guid: 0067a9c122df1384192acc576eea7b74
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level4March.unity
-    guid: ef51292eb3d130f4f9a13416d3162a1d
+    guid: 229c72773bf6eb7448d863f89dab72e8
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level5Rend.unity
-    guid: b53a6ef339cada74cb97a558534d96ef
+    guid: bf6c99d1bb5f0a94790bb166aa7a6268
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level6Dine.unity
-    guid: dd36e96560155cb4ea26f8901476065b
+    guid: ae401a48b2ce44f42a9a03858b64107a
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level7Offense.unity
-    guid: 464373ffeb7a15c44867814881c7e802
+    guid: 1105217eddfc3274c8e99d5a349fc565
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level8Titan.unity
-    guid: 27ea15386da0e4041a452a443b6f2a2c
+    guid: 36ac801eff208c24db2515d6e1412f34
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level9Artifice.unity
-    guid: d8c8712cb8e7a464ab6b39b9f28ee10d
+    guid: 3e41ae8cc5df9c64f987cc7a4134db06
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level10Adamance.unity
-    guid: 7c108d94cd61afc47aa28688a0204609
+    guid: ae9f0e5d91d1c144cbd8f3f38f8f6175
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/Level11Embrion.unity
-    guid: d69ffe1af383ce34f841eb0ddd677e97
+    guid: dff7e734789084144b2f14c2595249a7
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/MainMenu.unity
-    guid: 5ff49bb893ecfe348bc13a276d176ddf
+    guid: 92b81ef0e7065c24cb9c083debd539b1
   - enabled: 1
     path: Assets/LethalCompany/Game/Scenes/SampleSceneRelay.unity
-    guid: 14a73c634a7fce84ca7613a196577602
-  m_configObjects: {}
+    guid: 3460b5a2f6daf8449ba94f3190781504
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b3eb2234810cb614fa142ab6f0a5d516,
+      type: 3}

@@ -32,7 +32,7 @@ Transform:
   - {fileID: 4303542953148861}
   - {fileID: 4584365272902151}
   m_Father: {fileID: 4286429828388862}
-  m_LocalEulerAnglesHint: {x: -4.183932, y: 0.559775, z: 0.95347434}
+  m_LocalEulerAnglesHint: {x: -4.7822323, y: 0.04835841, z: 0.06239968}
 --- !u!1 &1079648164891543
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ Transform:
   m_Children:
   - {fileID: 4216381826610966}
   m_Father: {fileID: 4979423107971143}
-  m_LocalEulerAnglesHint: {x: -19.318378, y: -21.764988, z: -171.588}
+  m_LocalEulerAnglesHint: {x: 11.591735, y: -24.314106, z: 166.5414}
 --- !u!1 &1114543537602517
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ Transform:
   m_Children:
   - {fileID: 4296992006170994}
   m_Father: {fileID: 4115987825630623}
-  m_LocalEulerAnglesHint: {x: 0.4282381, y: 3.2524073, z: -0.7177236}
+  m_LocalEulerAnglesHint: {x: 2.0618796, y: 0.9084287, z: 0.2506194}
 --- !u!1 &1235970086713989
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ Transform:
   m_Children:
   - {fileID: 4404619676811150}
   m_Father: {fileID: 4889341030385717}
-  m_LocalEulerAnglesHint: {x: 66.98574, y: 8.799382, z: -0.7541683}
+  m_LocalEulerAnglesHint: {x: 64.12901, y: 10.095846, z: 21.815351}
 --- !u!1 &1266426834260531
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ Transform:
   - {fileID: 4286429828388862}
   - {fileID: 4750437693827381}
   m_Father: {fileID: 4121713904802733}
-  m_LocalEulerAnglesHint: {x: 1.672154, y: 3.2524054, z: -0.7177235}
+  m_LocalEulerAnglesHint: {x: -1.3286729, y: 0.6782567, z: 0.362351}
 --- !u!1 &1271792050549787
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4872951639124329}
   - component: {fileID: 7082435221872326765}
   m_Layer: 0
-  m_Name: CreatureVoice
+  m_Name: FiendVoice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,13 +204,13 @@ AudioSource:
   m_GameObject: {fileID: 1271792050549787}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+  OutputAudioMixerGroup: {fileID: 24300008, guid: 65b41f52516b02c4998a51a01f4d9b37,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -324,7 +324,7 @@ Transform:
   m_Children:
   - {fileID: 4121713904802733}
   m_Father: {fileID: 4979423107971143}
-  m_LocalEulerAnglesHint: {x: 10.332053, y: 0.34605467, z: -0.110010974}
+  m_LocalEulerAnglesHint: {x: 12.77241, y: 2.1454644, z: -3.5573924}
 --- !u!82 &82492215568198480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ AudioSource:
   m_GameObject: {fileID: 1300652793682687}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+  OutputAudioMixerGroup: {fileID: 24300008, guid: 65b41f52516b02c4998a51a01f4d9b37,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -453,7 +453,7 @@ Transform:
   m_Children:
   - {fileID: 4758840412425055}
   m_Father: {fileID: 4740939526008165}
-  m_LocalEulerAnglesHint: {x: 32.585785, y: 3.4671385, z: -0.026190002}
+  m_LocalEulerAnglesHint: {x: 32.975353, y: -3.3057153, z: 0.07089326}
 --- !u!1 &1318764521905571
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ Transform:
   m_Children:
   - {fileID: 4740939526008165}
   m_Father: {fileID: 4029519265459550}
-  m_LocalEulerAnglesHint: {x: -6.586582, y: -6.2904754, z: -2.5646334}
+  m_LocalEulerAnglesHint: {x: -55.80948, y: 21.79555, z: -34.62432}
 --- !u!1 &1324043855321668
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,10 +501,9 @@ GameObject:
   - component: {fileID: 195307801448061122}
   - component: {fileID: 65217664852057396}
   - component: {fileID: 8259129799989134492}
-  - component: {fileID: 114501881619068257}
-  - component: {fileID: 114484159853824960}
   - component: {fileID: 1673927091220275823}
   - component: {fileID: 1485732869778342599}
+  - component: {fileID: 114501881619068257}
   m_Layer: 19
   m_Name: TheFiend
   m_TagString: Enemy
@@ -617,7 +616,7 @@ AudioSource:
   m_GameObject: {fileID: 1324043855321668}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+  OutputAudioMixerGroup: {fileID: 24300008, guid: 65b41f52516b02c4998a51a01f4d9b37,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -790,6 +789,51 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &1673927091220275823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324043855321668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 95441078105055900}
+--- !u!114 &1485732869778342599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324043855321668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!114 &114501881619068257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,16 +843,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1324043855321668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -603552921, guid: 608a313db0135b541918b5b6a125cb4b, type: 3}
+  m_Script: {fileID: -603552921, guid: d920d516c7f719e4e83e1cdd56e55952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 3dbd84aea8bb80b419721ac2795ad818, type: 2}
-  skinnedMeshRenderers:
-  - {fileID: 137221491392801916}
+  skinnedMeshRenderers: []
   meshRenderers: []
   creatureAnimator: {fileID: 95441078105055900}
-  creatureVoice: {fileID: 82492215568198480}
-  creatureSFX: {fileID: 82705978865948019}
+  creatureVoice: {fileID: 7082435221872326765}
+  creatureSFX: {fileID: 7620077111829445398}
   eye: {fileID: 4692055446375463}
   dieSFX: {fileID: 0}
   enemyBehaviourStates: []
@@ -824,7 +867,7 @@ MonoBehaviour:
   currentBehaviourStateIndex: 0
   previousBehaviourStateIndex: 0
   currentOwnershipOnThisClient: 0
-  isInsidePlayerShip: 1
+  isInsidePlayerShip: 0
   AIIntervalTime: 0.2
   inSpecialAnimation: 0
   inSpecialAnimationWithPlayer: {fileID: 0}
@@ -832,6 +875,7 @@ MonoBehaviour:
   serverRotation: {x: 0, y: 0, z: 0}
   agent: {fileID: 195307801448061122}
   allAINodes: []
+  agentMask: 0
   targetNode: {fileID: 0}
   favoriteSpot: {fileID: 0}
   tempDist: 0
@@ -883,6 +927,7 @@ MonoBehaviour:
   isOutside: 0
   hitsPhysicsObjects: 0
   gotFarthestNodeAsync: 0
+  overrideSettingEnemyMeshes: 0
   StateOfMind:
     m_InternalValue: 0
   Funky:
@@ -904,6 +949,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: acb3e40daa42fe444bd032eaf1f556de, type: 3}
   - {fileID: 8300000, guid: 7725cee36bcc3fb4985f0c4104ddcab8, type: 3}
   StepClip: {fileID: 8300000, guid: 379f5dd9f8320124e8b2f4c023c9b7da, type: 3}
+  footstepSource: {fileID: 7620077111829445398}
+  FiendVoice: {fileID: 7082435221872326765}
   Seeking:
     m_InternalValue: 0
   Invis:
@@ -921,67 +968,9 @@ MonoBehaviour:
   OldR: {x: 0, y: 0, z: 0, w: 0}
   Step: 0
   timeOfDay: {fileID: 0}
+  enableLegacy: 0
   TargetLook: {fileID: 0}
---- !u!114 &114484159853824960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324043855321668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7127b8f98ca8ec9896b384a71d39a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainScript: {fileID: 114501881619068257}
-  canCollideWithEnemies: 1
-  onlyCollideWhenGrounded: 0
---- !u!114 &1673927091220275823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324043855321668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 95441078105055900}
---- !u!114 &1485732869778342599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324043855321668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseUnreliableDeltas: 0
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  Interpolate: 1
-  SlerpPosition: 0
+  PS: {fileID: 0}
 --- !u!1 &1331627763926583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1033,7 @@ Transform:
   m_Children:
   - {fileID: 4649465581137564}
   m_Father: {fileID: 4786783906294692}
-  m_LocalEulerAnglesHint: {x: 5.291034, y: -4.079912, z: -4.6272626}
+  m_LocalEulerAnglesHint: {x: -9.548588, y: 1.9226785, z: 27.834827}
 --- !u!1 &1402688609118395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1150,7 @@ GameObject:
   - component: {fileID: 4651000234306984}
   - component: {fileID: 7620077111829445398}
   m_Layer: 0
-  m_Name: CreatureSFX
+  m_Name: footstepSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,13 +1180,13 @@ AudioSource:
   m_GameObject: {fileID: 1450849360120397}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300008, guid: f5ee5a850d66475449a3864a9c431e1a,
+  OutputAudioMixerGroup: {fileID: 24300008, guid: 65b41f52516b02c4998a51a01f4d9b37,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1527,7 +1516,7 @@ Transform:
   m_Children:
   - {fileID: 4024347235385576}
   m_Father: {fileID: 4216381826610966}
-  m_LocalEulerAnglesHint: {x: 57.826153, y: 2.227798, z: 2.6591995}
+  m_LocalEulerAnglesHint: {x: 34.452282, y: -1.0649858, z: 5.7127695}
 --- !u!1 &1495579824624240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1610,7 @@ Transform:
   m_Children:
   - {fileID: 4463721524286008}
   m_Father: {fileID: 4863261777303502}
-  m_LocalEulerAnglesHint: {x: 40.872883, y: -3.2208521, z: 5.4763393}
+  m_LocalEulerAnglesHint: {x: 55.56536, y: 3.7036676, z: 8.389505}
 --- !u!1 &1585046695935664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1645,7 @@ Transform:
   - {fileID: 4115987825630623}
   - {fileID: 4901121815017073}
   m_Father: {fileID: 4317476054330162}
-  m_LocalEulerAnglesHint: {x: -15.987897, y: 0.58860743, z: 3.7296445}
+  m_LocalEulerAnglesHint: {x: -13.741829, y: 112.37187, z: -2.1200314}
 --- !u!1 &1639794320963046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1677,7 @@ Transform:
   m_Children:
   - {fileID: 4830319977010428}
   m_Father: {fileID: 4195983820119608}
-  m_LocalEulerAnglesHint: {x: 5.749317, y: 7.0418158, z: 8.552675}
+  m_LocalEulerAnglesHint: {x: -9.354076, y: -1.6135545, z: -64.018364}
 --- !u!1 &1645129618757999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1727,7 @@ MonoBehaviour:
   mainScript: {fileID: 114501881619068257}
   canCollideWithEnemies: 1
   onlyCollideWhenGrounded: 0
+  alwaysAllowHitting: 0
 --- !u!65 &65314466295867429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1901,7 +1891,7 @@ Transform:
   m_Children:
   - {fileID: 4786783906294692}
   m_Father: {fileID: 4296992006170994}
-  m_LocalEulerAnglesHint: {x: 135.95702, y: -77.697815, z: -20.330557}
+  m_LocalEulerAnglesHint: {x: 80.186195, y: -147.48863, z: 136.71388}
 --- !u!1 &1759457780551055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1923,7 @@ Transform:
   m_Children:
   - {fileID: 4863261777303502}
   m_Father: {fileID: 4979423107971143}
-  m_LocalEulerAnglesHint: {x: -15.993661, y: 1.7865924, z: 162.34987}
+  m_LocalEulerAnglesHint: {x: -6.846499, y: 17.655546, z: 170.60164}
 --- !u!1 &1845426135956418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,7 +1955,7 @@ Transform:
   m_Children:
   - {fileID: 4986641681549509}
   m_Father: {fileID: 4074192572345453}
-  m_LocalEulerAnglesHint: {x: 64.96546, y: 0.47055387, z: 2.8617158}
+  m_LocalEulerAnglesHint: {x: 67.42117, y: -10.178598, z: -9.5871105}
 --- !u!1 &1846318992472403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +1987,7 @@ Transform:
   m_Children:
   - {fileID: 4074192572345453}
   m_Father: {fileID: 4857787486693445}
-  m_LocalEulerAnglesHint: {x: -0.08777145, y: 11.540224, z: 2.213544}
+  m_LocalEulerAnglesHint: {x: -33.38981, y: -15.901426, z: 17.34732}
 --- !u!1 &1917414631669489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,7 +2019,7 @@ Transform:
   m_Children:
   - {fileID: 4195983820119608}
   m_Father: {fileID: 4296992006170994}
-  m_LocalEulerAnglesHint: {x: -75.55954, y: 89.25962, z: -179.51144}
+  m_LocalEulerAnglesHint: {x: 79.91625, y: 156.8935, z: -134.88339}
 --- !u!1 &1952469531769090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,7 +2082,7 @@ Transform:
   m_Children:
   - {fileID: 4692055446375463}
   m_Father: {fileID: 4296992006170994}
-  m_LocalEulerAnglesHint: {x: 20.377302, y: -1.6768711, z: -0.13229378}
+  m_LocalEulerAnglesHint: {x: 15.873026, y: 2.2341435, z: 2.0845866}
 --- !u!1 &1980865527386405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,4 +2145,4 @@ Transform:
   m_Children:
   - {fileID: 4060923255850317}
   m_Father: {fileID: 4750437693827381}
-  m_LocalEulerAnglesHint: {x: 46.767086, y: -6.2582374, z: -2.367504}
+  m_LocalEulerAnglesHint: {x: 81.68147, y: 6.809828, z: -23.058119}

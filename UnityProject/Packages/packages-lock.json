@@ -1,20 +1,27 @@
 {
   "dependencies": {
+    "com.autodesk.fbx": {
+      "version": "4.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.nomnom.unity-lc-project-patcher": {
-      "version": "https://github.com/Zaggy1024/unity-lc-project-patcher.git#v73-fixes",
+      "version": "https://github.com/Zaggy1024/unity-lc-project-patcher.git#v80-fixes",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "90103faf238229145c7456f48576f145b6103570"
+      "hash": "2c2b2330a581e9971852dbcf115d2d86ad2163ea"
     },
     "com.nomnom.unity-project-patcher": {
-      "version": "https://github.com/Zaggy1024/unity-project-patcher.git#lc-v73-fixes",
+      "version": "https://github.com/Zaggy1024/unity-project-patcher.git#lc-v80-fixes",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "2.0.0"
       },
-      "hash": "8da015b2b3450a66fe86d4cdf18d3c90de785543"
+      "hash": "989a6993cde20bd040c5086850c92cdf609c06a3"
     },
     "com.nomnom.unity-project-patcher-bepinex": {
       "version": "https://github.com/nomnomab/unity-project-patcher-bepinex.git",
@@ -28,7 +35,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e5b21d2e6365800ff9e545a8a250644917d28b24"
+      "hash": "f5276ccfc18464a45942456b62c637527dfa3599"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.6",
@@ -67,7 +74,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.11.3",
+      "version": "2.12.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -110,6 +117,16 @@
         "com.unity.test-framework": "1.1.33",
         "com.unity.testtools.codecoverage": "1.2.6"
       }
+    },
+    "com.unity.formats.fbx": {
+      "version": "4.2.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.autodesk.fbx": "4.2.1",
+        "com.unity.timeline": "1.7.1"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
       "version": "3.0.36",
@@ -166,7 +183,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.netcode.gameobjects": {
-      "version": "1.12.0",
+      "version": "1.12.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -1,20 +1,14 @@
 using BepInEx;
-using BepInEx.Bootstrap;
-using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using LethalLib;
 using LethalLib.Modules;
-using LethalLib.Modules;
 using System;
-using System.IO;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine;
-using UnityEngine.Assertions;
 namespace TheFiend
 {
-    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.2")]
+    [BepInPlugin("com.TheFiend", "The Fiend", "1.1.6")]
     public class TheFiendPlugin : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("TheFiend");
@@ -49,6 +43,7 @@ namespace TheFiend
             LoadAssets();
             logger = base.Logger;
             MyConfig = new Config(base.Config);
+            logger.LogInfo($"Loading {MyPluginInfo.PLUGIN_NAME}, Version v{MyPluginInfo.PLUGIN_VERSION}");
             EnemyType val = Assets.LoadAsset<EnemyType>("TheFiend.asset");
             TerminalNode val1 = Assets.LoadAsset<TerminalNode>("TheFiendNode.asset");
             TerminalKeyword val2 = Assets.LoadAsset<TerminalKeyword>("TheFiendKey.asset");

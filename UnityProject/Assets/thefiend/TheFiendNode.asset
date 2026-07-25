@@ -31,9 +31,9 @@ MonoBehaviour:
   overrideOptions: 0
   acceptAnything: 0
   terminalOptions: []
-  playClip: {fileID: 8300000, guid: 97a482fd622abc24fad2da37c96e2e5d, type: 3}
+  playClip: {fileID: 8300000, guid: af469b1833acbd6439b3d7edcbedbe48, type: 3}
   playSyncedClip: 2
-  displayTexture: {fileID: 2800000, guid: e3b77a8e90c2d3f4fa4eec0f3e2824d2, type: 3}
+  displayTexture: {fileID: 2800000, guid: 2e03ffb322148284e959dba603697c76, type: 3}
   displayVideo: {fileID: 0}
   loadImageSlowly: 0
   persistentImage: 0

@@ -1,123 +1,111 @@
 {
-  "StartTime": "2026-02-15T14:03:15.7948984+00:00",
-  "EndTime": "2026-02-15T15:09:10.4388833+00:00",
-  "ElapsedSeconds": 346.10298279999989,
+  "StartTime": "2026-07-02T20:37:42.4076169+01:00",
+  "EndTime": "2026-07-02T23:07:33.1811421+01:00",
+  "ElapsedSeconds": 216.67703429999997,
   "Results": [
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.GenerateDefaultProjectStructureStep",
-      "elapsedSeconds": 0.019266099999999998
+      "elapsedSeconds": 0.0202186
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.ImportTextMeshProStep",
-      "elapsedSeconds": 0.46140129999999996
+      "elapsedSeconds": 0.42382899999999996
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.GenerateGitIgnoreStep",
-      "elapsedSeconds": 0.015187299999999999
+      "elapsedSeconds": 0.017143099999999998
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.GenerateReadmeStep",
-      "elapsedSeconds": 0.0081543
+      "elapsedSeconds": 0.0088218
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.PackagesInstallerStep",
-      "elapsedSeconds": 33.771126599999995
+      "elapsedSeconds": 30.260476899999997
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.EnableNewInputSystemStep",
-      "elapsedSeconds": 91.4698342
+      "elapsedSeconds": 5.4135637
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.CacheProjectCatalogueStep",
-      "elapsedSeconds": 30.9995893
+      "elapsedSeconds": 14.160550899999999
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.AssetRipperStep",
-      "elapsedSeconds": 95.0390814
+      "elapsedSeconds": 99.9745398
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.MoveFilesInExportStep",
-      "elapsedSeconds": 0.0362353
+      "elapsedSeconds": 0.0228336
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.StripNGOGeneratedCodeStep",
-      "elapsedSeconds": 2.0647091
+      "elapsedSeconds": 1.9004751
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.CopyGamePluginsStep",
-      "elapsedSeconds": 0.048790799999999995
+      "elapsedSeconds": 0.0475591
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.CopyExplicitScriptFolderStep",
-      "elapsedSeconds": 0.0227424
+      "elapsedSeconds": 0.0282626
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.EnableUnsafeCodeStep",
-      "elapsedSeconds": 0.1524518
-    },
-    {
-      "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.CopyProjectSettingsStep",
-      "elapsedSeconds": 0.040107199999999996
+      "elapsedSeconds": 0.1667045
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.GuidRemapperStep",
-      "elapsedSeconds": 61.652604399999994
-    },
-    {
-      "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.MakeProxyScriptsStep",
-      "elapsedSeconds": 0.0202328
+      "elapsedSeconds": 33.6602208
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.CopyAssetRipperExportToProjectStep",
-      "elapsedSeconds": 7.939785
+      "elapsedSeconds": 8.7089204
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.MigrateProjectMaterialsStep",
-      "elapsedSeconds": 11.0632602
+      "elapsedSeconds": 9.8808857
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.FixInputSystemAssetsStep",
-      "elapsedSeconds": 0.4108901
+      "elapsedSeconds": 0.46612709999999996
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.FixProjectFileIdsStep",
-      "elapsedSeconds": 0.69016979999999994
+      "elapsedSeconds": 0.6931261
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.InjectHDRPAssetsStep",
-      "elapsedSeconds": 0.070890399999999992
+      "elapsedSeconds": 0.0675006
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.PatchLDRTexturesStep",
-      "elapsedSeconds": 3.3232936
+      "elapsedSeconds": 3.6705981
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.PatchDiageticAudioMixersStep",
-      "elapsedSeconds": 0.0569016
+      "elapsedSeconds": 0.06590399999999999
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.ChangeSceneListStep",
-      "elapsedSeconds": 0.0365206
+      "elapsedSeconds": 0.039245499999999996
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.SortAssetTypesSteps",
-      "elapsedSeconds": 7.2288406999999992
+      "elapsedSeconds": 7.5474923999999994
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.RestartEditorStep",
-      "elapsedSeconds": 0.0
+      "elapsedSeconds": 0.000508
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.ChangeGameViewResolutionStep",
-      "elapsedSeconds": 0.054975899999999994
+      "elapsedSeconds": 0.0514634
     },
     {
       "fullName": "Nomnom.UnityProjectPatcher.Editor.Steps.OpenSceneStep",
-      "elapsedSeconds": 0.34725639999999997
-    },
-    {
-      "fullName": "Nomnom.LethalCompanyProjectPatcher.Editor.FixES3Step",
-      "elapsedSeconds": 0.0586842
+      "elapsedSeconds": 0.3800635
     }
   ]
 }

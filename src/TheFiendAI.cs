@@ -40,7 +40,8 @@ public class TheFiendAI : EnemyAI
     private AudioSource AS;
 
     private AudioSource AS2;
-
+    public AudioSource footstepSource;
+    public AudioSource FiendVoice;
     private Vector3 FavSpot;
 
     private bool ResetNode;
@@ -80,13 +81,13 @@ public class TheFiendAI : EnemyAI
     private RoundManager roundManager;
 
     public TimeOfDay timeOfDay;
-
+    private bool hasSetRage;
     private LungProp LungApparatus;//lets just have this as the lungProp itself, not a gameobject
-
+    public bool enableLegacy;
     private Vector3 LungApparatusPosition;
 
     public GameObject TargetLook;
-
+    public ParticleSystem PS;
 
     public override void OnNetworkSpawn()
     {
@@ -94,17 +95,20 @@ public class TheFiendAI : EnemyAI
 
         if (IsServer)
         {
+            enableLegacy = TheFiend.Config.EnableLegacyBehaviourConfig;
             LungApparatusWillRage.Value =
                 TheFiend.Config.WillRageAfterApparatusConfig;
         }
     }
     public void Awake()
     {
+        enableLegacy = Config.EnableLegacyBehaviourConfig;
+        if (enableLegacy) TheFiendPlugin.logger.LogInfo("Loaded with Legacy Behaviour, there may be bugs");
         path = new NavMeshPath();
         FavSpot = transform.position;
         Head = Neck.transform.Find("mixamorig:Head").gameObject;
         OldR = Neck.transform.localRotation;
-        animator = GetComponent<Animator>();
+        if(animator == null) animator = GetComponent<Animator>();
         animator.Play("Idle");
         AS = GetComponent<AudioSource>();
         AS2 = Spine.GetComponent<AudioSource>();
@@ -117,6 +121,8 @@ public class TheFiendAI : EnemyAI
             breakerBox = null;
         }
         GetAINodes();
+        footstepSource = transform.Find("footstepSource").GetComponent<AudioSource>();
+        FiendVoice = transform.Find("FiendVoice").GetComponent<AudioSource>();
         roundManager = FindObjectOfType<RoundManager>();
         timeOfDay = FindObjectOfType<TimeOfDay>();
         MapDot.material.color = Color.red;
@@ -130,9 +136,9 @@ public class TheFiendAI : EnemyAI
         base.Start();
         OldYScale = Main.transform.position.y;
         enemyRandom = new System.Random(StartOfRound.Instance.randomMapSeed + thisEnemyIndex);
-        AS.clip = audioClips[0];
-        AS.loop = true;
-        AS.Play();
+        FiendVoice.clip = audioClips[0];
+        FiendVoice.loop = true;
+        FiendVoice.Play();
         if(LungApparatus != null)
         {
             if (LungApparatus.isLungDocked)
@@ -142,14 +148,24 @@ public class TheFiendAI : EnemyAI
             }
         }
         else if(LungApparatus == null) { TheFiendPlugin.logger.LogInfo("Failed to find an Apparatus?"); }
+        if (enableLegacy)
+        {
+            if (roundManager.currentLevel.currentWeather == LevelWeatherType.Eclipsed)
+            {
+                PS.Play();
+                PS.gameObject.GetComponent<AudioSource>().Play();
+                Funky.Value = 3;
+            }
+        }
     }
 
     public void FixedUpdate()
     {
         if (Step && !Invis.Value)
         {
-            AS2.pitch = UnityEngine.Random.Range(0.6f, 1f);
-            AS2.PlayOneShot(StepClip);
+            footstepSource.pitch = UnityEngine.Random.Range(0.6f, 1f);
+            footstepSource.volume = 0.7f;
+            footstepSource.PlayOneShot(StepClip);
         }
     }
 
@@ -168,219 +184,425 @@ public class TheFiendAI : EnemyAI
     public override void DoAIInterval()
     {
         base.DoAIInterval();
-
-        if (stunnedByPlayer != null)
+        if (enableLegacy)
         {
-            AS.clip = audioClips[2];
-            AS.loop = false;
-            AS.Play();
-
-            IsDying.Value = true;
-            skinnedMesh.enabled = false;
-
-            Destroy(gameObject, 4f);
-            stunnedByPlayer = null;
-        }
-
-        if (IsDying.Value)
-        {
-            SyncPositionToClients();
-            return;
-        }
-
-        if (timeOfDay.hour >= 15)
-            Funky.Value = 2;
-
-        AS.volume = (Seeking.Value || StateOfMind.Value == 3) ? 0f : TheFiend.Config.VolumeConfig;
-
-        skinnedMesh.enabled = !Invis.Value;
-
-        int funky = Mathf.Max(1, Funky.Value);
-
-        if (UnityEngine.Random.Range(1, 10000) == 1)
-            TeleportServerRpc();
-
-        if (StateOfMind.Value == 3 && UnityEngine.Random.Range(1, 10000 / funky) == 1)
-            HideOnCellingServerRpc();
-
-        if (!Seeking.Value && UnityEngine.Random.Range(1, 10000 / funky) == 1) ToggleSeekingServerRpc();
-
-        if (GlobalCD.Value)
-        {
-            SyncPositionToClients();
-            return;
-        }
-
-        if (StateOfMind.Value < 3)
-            StateOfMind.Value = 0;
-
-        if (breakerBox && !Seeking.Value)
-        {
-            Transform mesh = breakerBox.transform.Find("Mesh");
-            if (mesh != null)
+            base.DoAIInterval();
+            if (timeOfDay.hour >= 15)
             {
-                float dist = Vector3.Distance(Main.transform.position, mesh.position);
-
-                if (dist <= 5f)
-                {
-                    if (Physics.Raycast(Neck.transform.position,mesh.position - Neck.transform.position,out var hitInfo,float.PositiveInfinity,~LayerMask.GetMask("Enemies")) && Vector3.Distance(hitInfo.point, mesh.position) < 2f)
-                    {
-                        StateOfMind.Value = 4;
-                        TargetLook = mesh.gameObject;
-
-                        if (dist <= 2f)
-                            BreakerBoxBreakServerRpc();
-                    }
-                    else
-                    {
-                        StateOfMind.Value = 0;
-                    }
-                }
+                Funky.Value = 2;
             }
-        }
-
-        bool hasTarget = TargetClosestPlayer(100f, false, 70f);
-
-        if (hasTarget) TargetLook = targetPlayer.gameObject;
-
-        if (hasTarget && targetPlayer.currentlyHeldObject && targetPlayer.currentlyHeldObject.gameObject.name.Contains("FlashlightItem"))
-        {
-            Transform lightTransform = targetPlayer.currentlyHeldObject.transform.Find("Light");
-
-            if (lightTransform != null)
+            if (Seeking.Value)
             {
-                Light light = lightTransform.GetComponent<Light>();
-
-                if (light != null && light.enabled && Vector3.Distance(Head.transform.position, lightTransform.position) <= 2.5f)
-                {
-                    FearedServerRpc(false, true);
-                    LightTriggerTimes++;
-                }
+                FiendVoice.volume = 0f;
             }
-        }
-
-        if (hasTarget && StateOfMind.Value == 3 && !Seeking.Value && Vector3.Distance(transform.position, targetPlayer.transform.position) <= 4f)
-        {
-            HideOnCellingServerRpc();
-        }
-        if (LungApparatus && (LungApparatusWillRage.Value || TheFiend.Config.WillRageAfterApparatusConfig) && !Invis.Value && !LungApparatus.isLungDocked)
-        {
-            SetLungLightServerRpc();
-        }
-
-        if (!EatingPlayer && StateOfMind.Value <= 2 && !StandingMode.Value)
-        {
-            if (hasTarget)
+            else if (StateOfMind.Value != 3)
             {
-                ResetNode = true;
-
-                if (agent.remainingDistance > 10f && !RageMode.Value)
-                {
-                    OldYScale = Main.transform.position.y;
-
-                    if (!Seeking.Value)
-                    {
-                        StateOfMind.Value = 1;
-                        agent.speed = 3 + (funky - 1);
-                        animator.Play("Walk");
-
-                        if ((CheckDoor() && UnityEngine.Random.Range(1, 100) == 1 && StateOfMind.Value != 3) || (!CheckDoor() && UnityEngine.Random.Range(1, 1000) == 1 && StateOfMind.Value != 3))
-                        {
-                            HideOnCellingServerRpc();
-                        }
-                    }
-                    else
-                    {
-                        agent.speed = 1f;
-                        animator.Play("Seeking");
-                        BreakDoorServerRpc();
-                    }
-
-                    if (UnityEngine.Random.Range(1, TheFiend.Config.FlickerRngConfig) == 1)
-                    {
-                        roundManager.FlickerLights(true, true);
-                    }
-                }
-                else if (!Seeking.Value)
-                {
-                    StateOfMind.Value = 2;
-
-                    if (CheckLineOfSightForPlayer(45f, 60, -1) != null) targetPlayer.JumpToFearLevel(0.9f, true);
-
-                    agent.speed = RageMode.Value ? 20 * funky : 9 * funky;
-                    animator.Play("Run");
-                    BreakDoorServerRpc();
-                }
-
-                SetDestinationToPosition(targetPlayer.transform.position, false);
-
-                if (Seeking.Value)
-                {
-                    var players = FindObjectsOfType<PlayerControllerB>();
-
-                    foreach (var player in players)
-                    {
-                        if (player.HasLineOfSightToPosition(Neck.transform.position,45f,60, -1f))
-                        {
-                            ToggleSeekingServerRpc();
-                            FearedServerRpc(true);
-                            break;
-                        }
-                    }
-                }
+                FiendVoice.volume = global::TheFiend.Config.Volume.Value;
+            }
+            if (Invis.Value)
+            {
+                skinnedMesh.enabled = false;
             }
             else
             {
-                agent.speed = 3f;
-
-                if (ResetNode)
-                {
-                    WonderVectorServerRpc(60f);
-                    ResetNode = false;
-                }
-
-                if (Node != Vector3.zero)
-                    SetDestinationToPosition(Node, false);
-                else
-                    ResetNode = true;
-
-                if (agent.remainingDistance <= 0.5f || UnityEngine.Random.Range(1, 100) == 1)
-                {
-                    ResetNode = true;
-                }
-
-                TargetLook = null;
+                skinnedMesh.enabled = true;
             }
-
-            if (agent.remainingDistance == 0f && StateOfMind.Value == 0 && !RageMode.Value)
+            if (UnityEngine.Random.Range(1, 10000) == 1)
             {
-                animator.Play("Idle");
+                TeleportServerRpc();
             }
-            else if (!Seeking.Value && StateOfMind.Value == 1)
+            if (UnityEngine.Random.Range(1, 10000 / Funky.Value) == 1 && StateOfMind.Value == 3)
+            {
+                HideOnCellingServerRpc();
+            }
+            if (UnityEngine.Random.Range(1, 10000 / Funky.Value) == 1 && !Seeking.Value)
+            {
+                ToggleSeekingServerRpc();
+            }
+            if (!GlobalCD.Value)
+            {
+                if (StateOfMind.Value < 3)
+                {
+                    StateOfMind.Value = 0;
+                }
+                if (breakerBox && !Seeking.Value)
+                {
+                    GameObject gameObject = breakerBox.transform.Find("Mesh").gameObject;
+                    if (Vector3.Distance(Main.transform.position, gameObject.transform.position) <= 5f)
+                    {
+                        if (Physics.Raycast(Neck.transform.position, gameObject.transform.position - Neck.transform.position, out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enemies")) && Vector3.Distance(hitInfo.point, gameObject.transform.position) < 2f)
+                        {
+                            StateOfMind.Value = 4;
+                            TargetLook = gameObject;
+                            if (Vector3.Distance(Main.transform.position, gameObject.transform.position) <= 2f)
+                            {
+                                BreakerBoxBreakServerRpc();
+                            }
+                        }
+                        else
+                        {
+                            StateOfMind.Value = 0;
+                        }
+                    }
+                }
+                if (TargetClosestPlayer(100f, false, 70f))
+                {
+                    TargetLook = targetPlayer.gameObject;
+                    //if(targetPlayer.currentlyGrabbingObject) TheFiendPlugin.logger.LogInfo($"Player Holding Object: {targetPlayer.currentlyGrabbingObject.itemProperties.itemName}");
+                    if (targetPlayer.currentlyGrabbingObject && targetPlayer.currentlyGrabbingObject.gameObject.name.ToLower().Contains("flashlight"))
+                    {
+                        GameObject gameObject2 = targetPlayer.currentlyGrabbingObject.gameObject.transform.Find("Light").gameObject;
+                        Light component = gameObject2.GetComponent<Light>();
+                        if (component.enabled && Vector3.Distance(Head.transform.position, gameObject2.transform.position) <= 2.5f)
+                        {
+                            TheFiendPlugin.logger.LogInfo("Flashing The Fiend");
+                            FearedServerRpc(TempRage: false, uselight: true);
+                            LightTriggerTimes++;
+                        }
+                    }
+                }
+                if (StateOfMind.Value == 3 && !GlobalCD.Value && !Seeking.Value && TargetClosestPlayer(100f, false, 70f))
+                {
+                    TargetLook = targetPlayer.gameObject;
+                    if (Vector3.Distance(transform.position, targetPlayer.gameObject.transform.position) <= 4f)
+                    {
+                        HideOnCellingServerRpc();
+                    }
+                }
+                if (!EatingPlayer && StateOfMind.Value <= 2 && !GlobalCD.Value && !StandingMode.Value)
+                {
+                    if (TargetClosestPlayer(100f, false, 70f))
+                    {
+                        TargetLook = targetPlayer.gameObject;
+                        ResetNode = true;
+                        if (agent.remainingDistance > 10f && !RageMode.Value)
+                        {
+                            OldYScale = Main.transform.position.y;
+                            if (!Seeking.Value)
+                            {
+                                StateOfMind.Value = 1;
+                                agent.speed = 3 + (Funky.Value - 1);
+                                animator.Play("Walk");
+                                if (CheckDoor())
+                                {
+                                    if (UnityEngine.Random.Range(1, 100) == 1 && StateOfMind.Value != 3)
+                                    {
+                                        HideOnCellingServerRpc();
+                                    }
+                                }
+                                else if (UnityEngine.Random.Range(1, 1000) == 1 && StateOfMind.Value != 3)
+                                {
+                                    HideOnCellingServerRpc();
+                                }
+                            }
+                            else
+                            {
+                                agent.speed = 1f;
+                                animator.Play("Seeking");
+                                BreakDoorServerRpc();
+                            }
+                            if (UnityEngine.Random.Range(1, global::TheFiend.Config.FlickerRngChance.Value) == 1)
+                            {
+                                roundManager.FlickerLights(flickerFlashlights: true, disableFlashlights: true);
+                            }
+                        }
+                        else if (!Seeking.Value)
+                        {
+                            StateOfMind.Value = 2;
+                            if (CheckLineOfSightForPlayer() != null)
+                            {
+                                targetPlayer.JumpToFearLevel(0.9f);
+                            }
+                            if (!RageMode.Value)
+                            {
+                                agent.speed = 9 * Funky.Value;
+                            }
+                            else
+                            {
+                                agent.speed = 20 * Funky.Value;
+                            }
+                            animator.Play("Run");
+                            BreakDoorServerRpc();
+                        }
+                        SetDestinationToPosition(targetPlayer.transform.position);
+                        if (Seeking.Value)
+                        {
+                            PlayerControllerB[] array = UnityEngine.Object.FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
+                            foreach (PlayerControllerB playerControllerB in array)
+                            {
+                                if (playerControllerB.HasLineOfSightToPosition(Neck.transform.position, 45f, 60, -1f))
+                                {
+                                    ToggleSeekingServerRpc();
+                                    FearedServerRpc(TempRage: true);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        agent.speed = 3f;
+                        if (ResetNode)
+                        {
+                            WonderVectorServerRpc(60f);
+                            ResetNode = false;
+                        }
+                        if (Node != Vector3.zero)
+                        {
+                            SetDestinationToPosition(Node);
+                        }
+                        else
+                        {
+                            ResetNode = true;
+                        }
+                        if (agent.remainingDistance == 0f)
+                        {
+                            ResetNode = true;
+                        }
+                        if (UnityEngine.Random.Range(1, 100) == 1)
+                        {
+                            ResetNode = true;
+                        }
+                        TargetLook = null;
+                    }
+                    if (!GlobalCD.Value)
+                    {
+                        if (agent.remainingDistance == 0f && StateOfMind.Value == 0 && !RageMode.Value)
+                        {
+                            animator.Play("Idle");
+                        }
+                        else if (!Seeking.Value && StateOfMind.Value == 1)
+                        {
+                            animator.Play("Walk");
+                        }
+                    }
+                }
+                if (StateOfMind.Value == 4 && TargetLook)
+                {
+                    animator.Play("Walk");
+                    SetDestinationToPosition(TargetLook.transform.position);
+                }
+                if (LungApparatus && (LungApparatusWillRage.Value || TheFiend.Config.WillRageAfterApparatusConfig) && !Invis.Value && !LungApparatus.isLungDocked)
+                {
+                    if (!hasSetRage) { SetLungLightServerRpc(); hasSetRage = true; }
+                }
+            }
+            base.SyncPositionToClients();
+            return;
+        }
+        else
+        {
+            if (stunnedByPlayer != null)
+            {
+                FiendVoice.clip = audioClips[2];
+                FiendVoice.loop = false;
+                FiendVoice.Play();
+
+                IsDying.Value = true;
+                skinnedMesh.enabled = false;
+
+                Destroy(gameObject, 4f);
+                stunnedByPlayer = null;
+            }
+
+            if (IsDying.Value)
+            {
+                SyncPositionToClients();
+                return;
+            }
+
+            if (timeOfDay.hour >= 15)
+                Funky.Value = 2;
+
+            FiendVoice.volume = (Seeking.Value || StateOfMind.Value == 3) ? 0f : TheFiend.Config.VolumeConfig;
+
+            skinnedMesh.enabled = !Invis.Value;
+
+            int funky = Mathf.Max(1, Funky.Value);
+
+            if (UnityEngine.Random.Range(1, 10000) == 1)
+                TeleportServerRpc();
+
+            if (StateOfMind.Value == 3 && UnityEngine.Random.Range(1, 10000 / funky) == 1)
+                HideOnCellingServerRpc();
+
+            if (!Seeking.Value && UnityEngine.Random.Range(1, 10000 / funky) == 1) ToggleSeekingServerRpc();
+
+            if (GlobalCD.Value)
+            {
+                SyncPositionToClients();
+                return;
+            }
+
+            if (StateOfMind.Value < 3)
+                StateOfMind.Value = 0;
+
+            if (breakerBox && !Seeking.Value)
+            {
+                Transform mesh = breakerBox.transform.Find("Mesh");
+                if (mesh != null)
+                {
+                    float dist = Vector3.Distance(Main.transform.position, mesh.position);
+
+                    if (dist <= 5f)
+                    {
+                        if (Physics.Raycast(Neck.transform.position, mesh.position - Neck.transform.position, out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enemies")) && Vector3.Distance(hitInfo.point, mesh.position) < 2f)
+                        {
+                            StateOfMind.Value = 4;
+                            TargetLook = mesh.gameObject;
+
+                            if (dist <= 2f)
+                                BreakerBoxBreakServerRpc();
+                        }
+                        else
+                        {
+                            StateOfMind.Value = 0;
+                        }
+                    }
+                }
+            }
+
+            bool hasTarget = TargetClosestPlayer(100f, false, 70f);
+
+            if (hasTarget) TargetLook = targetPlayer.gameObject;
+
+            if (TargetClosestPlayer(100f, false, 70f))
+            {
+                TargetLook = targetPlayer.gameObject;
+                //if (targetPlayer.currentlyGrabbingObject) TheFiendPlugin.logger.LogInfo($"Player Holding Object: {targetPlayer.currentlyGrabbingObject.itemProperties.itemName}");
+                if (targetPlayer.currentlyGrabbingObject && targetPlayer.currentlyGrabbingObject.gameObject.name.ToLower().Contains("flashlight"))
+                {
+                    GameObject gameObject2 = targetPlayer.currentlyGrabbingObject.gameObject.transform.Find("Light").gameObject;
+                    Light component = gameObject2.GetComponent<Light>();
+                    if (component.enabled && Vector3.Distance(Head.transform.position, gameObject2.transform.position) <= 2.5f)
+                    {
+                        TheFiendPlugin.logger.LogInfo("Flashing The Fiend");
+                        FearedServerRpc(TempRage: false, uselight: true);
+                        LightTriggerTimes++;
+                    }
+                }
+            }
+
+            if (hasTarget && StateOfMind.Value == 3 && !Seeking.Value && Vector3.Distance(transform.position, targetPlayer.transform.position) <= 4f)
+            {
+                HideOnCellingServerRpc();
+            }
+            if (LungApparatus && (LungApparatusWillRage.Value || TheFiend.Config.WillRageAfterApparatusConfig) && !Invis.Value && !LungApparatus.isLungDocked)
+            {
+                if (!hasSetRage) { SetLungLightServerRpc(); hasSetRage = true; }
+            }
+
+            if (!EatingPlayer && StateOfMind.Value <= 2 && !StandingMode.Value)
+            {
+                if (hasTarget)
+                {
+                    ResetNode = true;
+
+                    if (agent.remainingDistance > 10f && !RageMode.Value)
+                    {
+                        OldYScale = Main.transform.position.y;
+
+                        if (!Seeking.Value)
+                        {
+                            StateOfMind.Value = 1;
+                            agent.speed = 3 + (funky - 1);
+                            animator.Play("Walk");
+
+                            if ((CheckDoor() && UnityEngine.Random.Range(1, 100) == 1 && StateOfMind.Value != 3) || (!CheckDoor() && UnityEngine.Random.Range(1, 1000) == 1 && StateOfMind.Value != 3))
+                            {
+                                HideOnCellingServerRpc();
+                            }
+                        }
+                        else
+                        {
+                            agent.speed = 1f;
+                            animator.Play("Seeking");
+                            BreakDoorServerRpc();
+                        }
+
+                        if (UnityEngine.Random.Range(1, TheFiend.Config.FlickerRngConfig) == 1)
+                        {
+                            roundManager.FlickerLights(true, true);
+                        }
+                    }
+                    else if (!Seeking.Value)
+                    {
+                        StateOfMind.Value = 2;
+
+                        if (CheckLineOfSightForPlayer(45f, 60, -1) != null) targetPlayer.JumpToFearLevel(0.9f, true);
+
+                        agent.speed = RageMode.Value ? 20 * funky : 9 * funky;
+                        animator.Play("Run");
+                        BreakDoorServerRpc();
+                    }
+
+                    SetDestinationToPosition(targetPlayer.transform.position, false);
+
+                    if (Seeking.Value)
+                    {
+                        var players = FindObjectsOfType<PlayerControllerB>();
+
+                        foreach (var player in players)
+                        {
+                            if (player.HasLineOfSightToPosition(Neck.transform.position, 45f, 60, -1f))
+                            {
+                                ToggleSeekingServerRpc();
+                                FearedServerRpc(true);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    agent.speed = 3f;
+
+                    if (ResetNode)
+                    {
+                        WonderVectorServerRpc(60f);
+                        ResetNode = false;
+                    }
+
+                    if (Node != Vector3.zero)
+                        SetDestinationToPosition(Node, false);
+                    else
+                        ResetNode = true;
+
+                    if (agent.remainingDistance <= 0.5f || UnityEngine.Random.Range(1, 100) == 1)
+                    {
+                        ResetNode = true;
+                    }
+
+                    TargetLook = null;
+                }
+
+                if (agent.remainingDistance == 0f && StateOfMind.Value == 0 && !RageMode.Value)
+                {
+                    animator.Play("Idle");
+                }
+                else if (!Seeking.Value && StateOfMind.Value == 1)
+                {
+                    animator.Play("Walk");
+                }
+            }
+
+            if (StateOfMind.Value == 4 && TargetLook != null)
             {
                 animator.Play("Walk");
+                SetDestinationToPosition(TargetLook.transform.position, false);
             }
+            base.SyncPositionToClients();
+            return;
         }
-
-        if (StateOfMind.Value == 4 && TargetLook != null)
-        {
-            animator.Play("Walk");
-            SetDestinationToPosition(TargetLook.transform.position, false);
-        }
-
-        base.SyncPositionToClients();
     }
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     public void SetLungLightServerRpc()
     {
+        StartCoroutine(Rage());
         SetLungLightClientRpc();
     }
     [ClientRpc]
     public void SetLungLightClientRpc()
-    {
-        SetLungLightOnLocalClient();
-    }
-    public void SetLungLightOnLocalClient()
     {
         Transform lightTransform = LungApparatus.transform.Find("Point Light");
         if (lightTransform != null)
@@ -389,7 +611,6 @@ public class TheFiendAI : EnemyAI
             light?.color = Color.red;
         }
         LungApparatus.scrapValue = 300;
-        StartCoroutine(Rage());
     }
     [ServerRpc]
     public void ToggleSeekingServerRpc()
@@ -408,30 +629,30 @@ public class TheFiendAI : EnemyAI
     [ServerRpc(RequireOwnership = false)]
     public void SceamServerRpc()
     {
-        AS.Stop();
-        AS.clip = audioClips[UnityEngine.Random.Range(1, 2)];
-        AS.loop = false;
-        AS.Play();
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[UnityEngine.Random.Range(1, 2)];
+        FiendVoice.loop = false;
+        FiendVoice.Play();
         SceamClientRpc();
     }
 
     [ClientRpc]
     public void SceamClientRpc()
     {
-        AS.Stop();
-        AS.clip = audioClips[UnityEngine.Random.Range(1, 2)];
-        AS.loop = false;
-        AS.Play();
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[UnityEngine.Random.Range(1, 2)];
+        FiendVoice.loop = false;
+        FiendVoice.Play();
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void IdleSoundServerRpc()
     {
 
-        AS.Stop();
-        AS.clip = audioClips[0];
-        AS.loop = true;
-        AS.Play();
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[0];
+        FiendVoice.loop = true;
+        FiendVoice.Play();
         IdleSoundClientRpc();
     }
 
@@ -439,10 +660,10 @@ public class TheFiendAI : EnemyAI
     public void IdleSoundClientRpc()
     {
 
-        AS.Stop();
-        AS.clip = audioClips[0];
-        AS.loop = true;
-        AS.Play();
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[0];
+        FiendVoice.loop = true;
+        FiendVoice.Play();
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -465,76 +686,119 @@ public class TheFiendAI : EnemyAI
 
     public IEnumerator Grabbing(GameObject Player)
     {
-        if (EatingPlayer || !Player)
+        
+        if (enableLegacy)
         {
-            yield break;
-        }
-        PlayerControllerB PCB = Player.GetComponent<PlayerControllerB>();
-        if (PCB.health <= 50)
-        {
-            EatingPlayer = true;
-            TargetLook = null;
-            agent.speed = 0f;
-            SetDestinationToPosition(agent.transform.position, false);
-            float oldspeed = PCB.movementSpeed;
-            PCB.movementSpeed = 0f;
-            animator.Play("Grab");
-            transform.LookAt(Player.transform.position, Vector3.up);
-            rotateCoroutine = StartCoroutine(RotatePlayerToMe(PCB));
-            SceamServerRpc();
-            yield return new WaitForSeconds(1.7f);
-            AS.clip = audioClips[7];
-            AS.loop = true;
-            AS.Play();
-            PCB.KillPlayer(Main.transform.forward * 30f, true, CauseOfDeath.Mauling, 1, default(Vector3));
-            PCB.movementSpeed = oldspeed;
-            GameObject tempHead = null;
-            foreach(Transform Stuffs in RoundManager.Instance.mapPropsContainer.transform)
+            if (!EatingPlayer && Player)
             {
-                if(Stuffs.gameObject.name.ToLower().Contains("head") && Vector3.Distance(transform.position,Stuffs.position) < 10f)
+                EatingPlayer = true;
+                TargetLook = null;
+                agent.speed = 0f;
+                SetDestinationToPosition(agent.transform.position);
+                PlayerControllerB PCB = Player.GetComponent<PlayerControllerB>();
+                float oldspeed = PCB.movementSpeed;
+                PCB.movementSpeed = 0f;
+                animator.Play("Grab");
+                transform.LookAt(Player.transform.position, Vector3.up);
+                rotateCoroutine = StartCoroutine(RotatePlayerToMe(PCB));
+                SceamServerRpc();
+                yield return new WaitForSeconds(1.7f);
+                PCB.KillPlayer(Main.transform.forward * 15f, true, CauseOfDeath.Suffocation, 1);
+                if (PCB.IsOwner)
                 {
-                    tempHead = Stuffs.gameObject;
-                    UnityEngine.Object.Destroy(tempHead.GetComponent<Rigidbody>());
-                    yield return new WaitForSeconds(0.1f);
-                    tempHead.transform.position = LeftHand.transform.position;
-                    yield return new WaitForSeconds(0.1f);
-                    tempHead.transform.SetParent(LeftHand.transform, worldPositionStays: true);
-                    yield return new WaitForSeconds(0.1f);
-                    break;
+                    PCB.movementSpeed = oldspeed;
                 }
+                yield return new WaitForSeconds(1f);
+                IdleSoundServerRpc();
+                animator.Play("Idle");
+                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
+                RageMode.Value = false; 
+                if (rotateCoroutine != null)
+                {
+                    StopCoroutine(rotateCoroutine);
+                    rotateCoroutine = null;
+                }
+                if (UnityEngine.Random.Range(1, 30) == 1)
+                {
+                    HideOnCellingServerRpc();
+                }
+                EatingPlayer = false;
             }
-            yield return new WaitForSeconds(1f);
-            if (rotateCoroutine != null)
-            {
-                StopCoroutine(rotateCoroutine);
-                rotateCoroutine = null;
-            }
-            IdleSoundServerRpc();
-            animator.Play("Idle");
-            yield return new WaitForSeconds(3f);
-            if (tempHead != null)
-            {
-                tempHead.transform.SetParent(RoundManager.Instance.mapPropsContainer.transform, worldPositionStays: true);
-                yield return new WaitForSeconds(0.1f);
-                tempHead.AddComponent<Rigidbody>();
-            }
-            yield return new WaitForSeconds(3f);
-            RageMode.Value = false;
-            if (UnityEngine.Random.Range(1, 30) == 1)
-            {
-                HideOnCellingServerRpc();
-            }
-
-            EatingPlayer = false;
         }
         else
         {
-            PCB.DamagePlayer(50, true, true, (CauseOfDeath)0, 0, false, default(Vector3));
-            PCB.externalForceAutoFade += Main.transform.forward * 30f;
-            animator.Play("Crawl");
-            if(IsServer) GlobalCD.Value = true;
-            PCB.movementAudio.PlayOneShot(audioClips[6], 1f);
-            StartCooldown(1f);
+            if (EatingPlayer || !Player)
+            {
+                yield break;
+            }
+            PlayerControllerB PCB = Player.GetComponent<PlayerControllerB>();
+            if (PCB.health <= 50)
+            {
+                EatingPlayer = true;
+                TargetLook = null;
+                agent.speed = 0f;
+                SetDestinationToPosition(agent.transform.position, false);
+                float oldspeed = PCB.movementSpeed;
+                PCB.movementSpeed = 0f;
+                animator.Play("Grab");
+                transform.LookAt(Player.transform.position, Vector3.up);
+                rotateCoroutine = StartCoroutine(RotatePlayerToMe(PCB));
+                SceamServerRpc();
+                yield return new WaitForSeconds(1.7f);
+                FiendVoice.clip = audioClips[7];
+                FiendVoice.loop = true;
+                FiendVoice.Play();
+                PCB.KillPlayer(Main.transform.forward * 30f, true, CauseOfDeath.Mauling, 1, default(Vector3));
+                PCB.movementSpeed = oldspeed;
+                GameObject tempHead = null;
+                foreach (Transform Stuffs in RoundManager.Instance.mapPropsContainer.transform)
+                {
+                    if (Stuffs.gameObject.name.ToLower().Contains("head") && Vector3.Distance(transform.position, Stuffs.position) < 10f)
+                    {
+                        tempHead = Stuffs.gameObject;
+                        UnityEngine.Object.Destroy(tempHead.GetComponent<Rigidbody>());
+                        yield return new WaitForSeconds(0.1f);
+                        tempHead.transform.position = LeftHand.transform.position;
+                        yield return new WaitForSeconds(0.1f);
+                        tempHead.transform.SetParent(LeftHand.transform, worldPositionStays: true);
+                        yield return new WaitForSeconds(0.1f);
+                        break;
+                    }
+                }
+                yield return new WaitForSeconds(1f);
+                if (rotateCoroutine != null)
+                {
+                    StopCoroutine(rotateCoroutine);
+                    rotateCoroutine = null;
+                }
+                IdleSoundServerRpc();
+                animator.Play("Idle");
+                yield return new WaitForSeconds(3f);
+                if (tempHead != null)
+                {
+                    tempHead.transform.SetParent(RoundManager.Instance.mapPropsContainer.transform, worldPositionStays: true);
+                    yield return new WaitForSeconds(0.1f);
+                    tempHead.AddComponent<Rigidbody>();
+                }
+                yield return new WaitForSeconds(3f);
+                RageMode.Value = false;
+                if (UnityEngine.Random.Range(1, 30) == 1)
+                {
+                    HideOnCellingServerRpc();
+                }
+
+                EatingPlayer = false;
+            }
+            else
+            {
+                PCB.DamagePlayer(50, true, true, (CauseOfDeath)0, 0, false, default(Vector3));
+                PCB.externalForceAutoFade += Main.transform.forward * 30f;
+                animator.Play("Crawl");
+                if (IsServer) GlobalCD.Value = true;
+                PCB.movementAudio.PlayOneShot(audioClips[6], 1f);
+                StartCooldown(1f);
+            }
         }
     }
 
@@ -566,9 +830,9 @@ public class TheFiendAI : EnemyAI
                 StateOfMind.Value = 3;
                 LastPos = Main.transform.position;
                 OldYScale = Main.transform.position.y;
-                Physics.Raycast(Main.transform.position, transform.TransformDirection(Vector3.up), out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enmies"));
+                Physics.Raycast(Main.transform.position, transform.TransformDirection(Vector3.up), out var hitInfo, float.PositiveInfinity, ~LayerMask.GetMask("Enemies"));
                 animator.Play("Hide");
-                AS.Stop();
+                FiendVoice.Stop();
                 agent.speed = 0f;
                 SetYLevelClientRpc(hitInfo.point.y);
                 MapDot.enabled = false;
@@ -609,7 +873,7 @@ public class TheFiendAI : EnemyAI
         StandingMode.Value = false;
     }
 
-    [ServerRpc  ]
+    [ServerRpc]
     public void BreakDoorServerRpc()
     {
         try
@@ -672,17 +936,20 @@ public class TheFiendAI : EnemyAI
     [ServerRpc(RequireOwnership = false)]
     public void FearedServerRpc(bool TempRage, bool uselight = false)
     {
-        if(IsServer) GlobalCD.Value = true;
-        FearedClientRpc();
-        StartCoroutine(CD(5f));
-        float tempRage = 3f;
-        if (uselight)
+        if (!EatingPlayer && !StandingMode.Value)
         {
-            tempRage = LightTriggerTimes * 2;
-        }
-        if (TempRage)
-        {
-            StartCoroutine(SetTempRage(tempRage));
+            GlobalCD.Value = true;
+            FearedClientRpc();
+            StartCoroutine(CD(5f));
+            float tempRage = 3f;
+            if (uselight)
+            {
+                tempRage = LightTriggerTimes * 2;
+            }
+            if (TempRage)
+            {
+                StartCoroutine(SetTempRage(tempRage));
+            }
         }
     }
 
@@ -696,15 +963,15 @@ public class TheFiendAI : EnemyAI
         {
             player.JumpToFearLevel(0.9f, true);
         }
-        AS.maxDistance = 500f;
-        AS.Stop();
-        AS.clip = audioClips[5];
-        AS.loop = false;
-        AS.Play();
+        FiendVoice.maxDistance = 500f;
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[5];
+        FiendVoice.loop = false;
+        FiendVoice.Play();
         TheFiendPlugin.logger.LogInfo("We should be raging");
         yield return new WaitForSeconds(9f);
         ToggleRageServerRpc(TheRageValue: true);
-        AS.maxDistance = 30f;
+        FiendVoice.maxDistance = 30f;
         if (IsServer) GlobalCD.Value = false;
         yield return new WaitForSeconds(20f);
         ToggleRageServerRpc(TheRageValue: false);
@@ -719,6 +986,7 @@ public class TheFiendAI : EnemyAI
     [ServerRpc(RequireOwnership = false)]
     public void TeleportServerRpc()
     {
+        if (Invis.Value == true) return;
         Invis.Value = true;
         List<PlayerControllerB> list = new List<PlayerControllerB>();
         PlayerControllerB[]? array = FindObjectsOfType(typeof(PlayerControllerB)) as PlayerControllerB[];
@@ -742,10 +1010,10 @@ public class TheFiendAI : EnemyAI
     {
         animator.Play("CoverFace");
         agent.speed = 0f;
-        AS.Stop();
-        AS.clip = audioClips[4];
-        AS.loop = false;
-        AS.Play();
+        FiendVoice.Stop();
+        FiendVoice.clip = audioClips[4];
+        FiendVoice.loop = false;
+        FiendVoice.Play();
     }
 
     public void StartCooldown(float time, bool UnInvis = false)

@@ -5,7 +5,7 @@
         <AssemblyName>TheFiend</AssemblyName>
         <Product>TheFiend</Product>
         <!-- Change to whatever version you're currently on. -->
-        <Version>1.1.2</Version>
+        <Version>1.1.6</Version>
     </PropertyGroup>
 
     <!-- Project Properties -->
@@ -38,6 +38,7 @@
         viewing Private Information in stack traces.
         -->
         <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
+        <AssemblyVersion></AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <GenerateAssemblyInfo>True</GenerateAssemblyInfo>

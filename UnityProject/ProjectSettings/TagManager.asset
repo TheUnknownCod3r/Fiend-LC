@@ -61,6 +61,12 @@ TagManager:
   - RadarRoomSprite
   - RadarCodeUIObject
   - TerrainContourMap
+  - WalkieTalkieNoise
+  - Slime
+  - Tree
+  - InsideEntranceDoor
+  - IndirectLightSource
+  - SpecialStartRoomBounds
   layers:
   - Default
   - TransparentFX

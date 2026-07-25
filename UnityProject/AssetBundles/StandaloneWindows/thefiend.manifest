@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 278504737
+CRC: 3777014774
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 26970ae976120c3006c0816ca8de59cd
+    Hash: 3aa1775852c4ef1cbacd766c4ec99726
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 30eb574931dff2568260d790694d3e24
+    Hash: 05a99ab2b775e41c54eef33874a55709
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 26970ae976120c3006c0816ca8de59cd
+    Hash: 3aa1775852c4ef1cbacd766c4ec99726
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -53,8 +53,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
 - Class: 114
-  Script: {fileID: -603552921, guid: 608a313db0135b541918b5b6a125cb4b, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 3c36d0a92cbb1f26a39169ef0eae393a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 6d7127b8f98ca8ec9896b384a71d39a2, type: 3}
@@ -62,6 +60,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 0e80ae96b3eb9177eea5c8f9dadbcda1, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+- Class: 114
+  Script: {fileID: -603552921, guid: d920d516c7f719e4e83e1cdd56e55952, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d3cecf05b78b173605122a700874719c, type: 3}
 - Class: 115
@@ -84,6 +84,8 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: EnemySize
 - AssemblyName: Assembly-CSharp
+  ClassName: EnemyWaterType
+- AssemblyName: Assembly-CSharp
   ClassName: NavSizeLimit
 - AssemblyName: Unity.Netcode.Runtime
   ClassName: Unity.Netcode.NetworkVariable`1[System.Boolean]
@@ -96,10 +98,12 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/thefiend/smoke.png
 - Assets/thefiend/animations/Craw.anim
-- Assets/thefiend/animations/Enemii.controller
+- Assets/thefiend/animations/TheFiendController.controller
 - Assets/thefiend/audio/growl.ogg
-- Assets/thefiend/audio/Pain.ogg
+- Assets/thefiend/animations/Enemii.controller
+- Assets/thefiend/animations/walking.anim
 - Assets/thefiend/materials/enemii.mat
+- Assets/thefiend/audio/Pain.ogg
 - Assets/thefiend/animations/Seeking.anim
 - Assets/thefiend/TheFiend.prefab
 - Assets/thefiend/animations/CoverFace.anim
@@ -118,6 +122,7 @@ Assets:
 - Assets/thefiend/animations/Idle.anim
 - Assets/thefiend/audio/Imprisoned.ogg
 - Assets/thefiend/animations/Walk.anim
+- Assets/thefiend/animations/Idle2.anim
 - Assets/thefiend/enemii.png
 - Assets/thefiend/TheFiendNode.asset
 - Assets/thefiend/audio/Step.ogg

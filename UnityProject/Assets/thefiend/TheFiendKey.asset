@@ -15,6 +15,6 @@ MonoBehaviour:
   word: TheFiend
   isVerb: 0
   compatibleNouns: []
-  specialKeywordResult: {fileID: 11400000, guid: e28d1c1c4013b314882de73b0f17a5f4, type: 2}
+  specialKeywordResult: {fileID: 11400000, guid: fcaee358e23c1094a843551eee45f4df, type: 2}
   defaultVerb: {fileID: 0}
   accessTerminalObjects: 0
